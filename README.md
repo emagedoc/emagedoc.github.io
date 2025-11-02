@@ -7,3 +7,4 @@ This is the code repository for the CodeClash website, built using Flask and Mar
 $ make preview
 # To build the static site
 $ make build
+```
