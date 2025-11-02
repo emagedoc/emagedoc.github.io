@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Arenas</h1>
+</div>
+
+<div class="arenas-container">
+    <div class="arenas-grid">
+        {%- for page in pages | sort(attribute='title') %}
+        <div class="arena-card">
+            {% if page.image %}
+            <img src="{{ page.image }}" alt="{{ page.title }}">
+            {% endif %}
+            <h3 style="margin: 0 auto;">{{ page.title }}</h3>
+            <p style="margin: 0.5em auto;">{{ page.description }}</p>
+        </div>
+        {%- endfor %}
+    </div>
+</div>
+
+{% endblock content %}

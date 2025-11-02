@@ -73,3 +73,47 @@ body {
     text-align: right;
     width: 8rem;
 }
+
+/* Arenas grid - layout only */
+.arenas-container {
+    padding: 1rem;
+}
+
+.arenas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.arena-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.arena-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.arena-card img {
+    height: 50px;     /* fixed height */
+    width: auto;       /* keep original aspect ratio */
+    max-width: 100%;   /* never exceed container width */
+    display: block;
+    margin: 1em auto;
+    object-fit: contain;
+}
+
+@media (max-width: 900px) {
+    .arenas-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 540px) {
+    .arenas-grid { grid-template-columns: 1fr; }
+}

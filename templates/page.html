@@ -4,8 +4,9 @@
 <br>
 <div style="text-align:center;">
   <h2>{{ page.title }}</h2>
-  <p>{{ page.time }}</p>
-  by {{ page.authors }}
+  <p>{{ page.description }}</p>
+  {% if page.time %} <p>{{ page.time }}</p> {% endif %}
+  {% if page.authors %}by {{ page.authors }}{% endif %}
 </div>
 <br>
 

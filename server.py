@@ -27,6 +27,8 @@ pages = FlatPages(app)
 freezer = Freezer(app)
 markdown_manager = Markdown(app, extensions=['fenced_code'], output_format='html5',)
 
+pages_insights = [page for page in list(pages) if page.path.startswith('insights/')]
+pages_arenas = [page for page in list(pages) if page.path.startswith('arenas/')]
 
 # Routes
 @app.route('/')
@@ -44,7 +46,11 @@ def team():
 
 @app.route('/insights')
 def insights():
-    return render_template('insights.html', pages=pages)
+    return render_template('insights.html', pages=pages_insights)
+
+@app.route('/arenas')
+def arenas():
+    return render_template('arenas.html', pages=pages_arenas)
 
 @app.errorhandler(404)
 def page_not_found(path):
