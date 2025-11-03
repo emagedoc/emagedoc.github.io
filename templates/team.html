@@ -9,7 +9,16 @@
 {% for contributor in data.contributors %}
     <a href="{{ contributor.link }}" class="team-card">
         <div class="team-name">{{ contributor.name }}</div>
-        <div style="font-size: 0.9em;">{{ contributor.role }}</div>
+        <div class="subtext" style="font-size: 0.9em; display: flex; align-items: center; gap: 0.5em;">
+            {% if contributor.affiliation == "Stanford University" %}
+                <img src="/static/images/orgs/stanford.png" alt="Stanford" style="height: 1em;">
+            {% elif contributor.affiliation == "Princeton University" %}
+                <img src="/static/images/orgs/princeton.svg" alt="Princeton" style="height: 1em;">
+            {% elif contributor.affiliation == "Cornell University" %}
+                <img src="/static/images/orgs/cornell.png" alt="Cornell" style="height: 1em;">
+            {% endif %}
+            {{ contributor.role }}
+        </div>
     </a>
 {% endfor %}
 </div>

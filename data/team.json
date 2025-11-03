@@ -3,37 +3,44 @@
         {
             "name": "John Yang",
             "role": "Co-Lead",
-            "link": "https://john-b-yang.github.io/"
+            "link": "https://john-b-yang.github.io/",
+            "affiliation": "Stanford University"
         },
         {
             "name": "Kilian Lieret",
             "role": "Co-Lead",
-            "link": "https://www.lieret.net/"
+            "link": "https://www.lieret.net/",
+            "affiliation": "Princeton University"
         },
         {
             "name": "Joyce Yang",
             "role": "Contributor",
-            "link": "https://joycebyang.github.io/"
+            "link": "https://joycebyang.github.io/",
+            "affiliation": "Cornell University"
         },
         {
             "name": "Carlos E. Jimenez",
             "role": "Contributor",
-            "link": "https://www.carlosejimenez.com/#about"
+            "link": "https://www.carlosejimenez.com/#about",
+            "affiliation": "Princeton University"
         },
         {
             "name": "Ofir Press",
             "role": "Advisor",
-            "link": "https://ofir.io/"
+            "link": "https://ofir.io/",
+            "affiliation": "Princeton University"
         },
         {
             "name": "Ludwig Schmidt",
             "role": "Advisor",
-            "link": "https://people.csail.mit.edu/ludwigs/"
+            "link": "https://people.csail.mit.edu/ludwigs/",
+            "affiliation": "Stanford University"
         },
         {
             "name": "Diyi Yang",
             "role": "Advisor",
-            "link": "https://cs.stanford.edu/~diyiy/index.html"
+            "link": "https://cs.stanford.edu/~diyiy/index.html",
+            "affiliation": "Stanford University"
         }
     ],
     "sponsors": [
