@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div style="text-align:center;">
+  <h2>{{ page.title }}</h2>
+  {{ page.description }}
+</div>
+<br>
+
+<div class="blog">
+  {{page.html|safe}}
+</div>
+{% endblock content %}

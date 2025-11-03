@@ -1,5 +1,7 @@
 title: RoboCode
 image: /static/images/arenas/robocode.png
-description: Hi
+description: Tank combat - outlast and outgun opponents
+players: 2+
+language: Java
 
 ---

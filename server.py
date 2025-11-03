@@ -37,6 +37,10 @@ def index():
 def page(path):
     return render_template('page.html', page=pages.get_or_404(path))
 
+@app.route('/about/')
+def about():
+    return render_template('about.html')
+
 @app.route('/team/')
 def team():
     return render_template('team.html')
@@ -55,7 +59,7 @@ def arenas():
 
 @app.route('/arenas/<path:path>/')
 def arena(path):
-    return render_template('page.html', page=pages.get_or_404('arenas/' + path))
+    return render_template('arena.html', page=pages.get_or_404('arenas/' + path))
 
 @app.errorhandler(404)
 def page_not_found(path):

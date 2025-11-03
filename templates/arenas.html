@@ -8,15 +8,13 @@
 <div class="arenas-container">
     <div class="arenas-grid">
         {%- for page in pages | sort(attribute='title') %}
-        <div class="arena-card">
-            {% if page.image %}
-            <img src="{{ page.image }}" alt="{{ page.title }}">
-            {% endif %}
-            <a href="{{ url_for("page", path=page.path) }}">
+        <a href="{{ url_for("page", path=page.path) }}">
+            <div class="arena-card">
+                <img src="{{ page.image }}" alt="{{ page.title }}">
                 <b>{{ page.title }}</b>
-            </a>
-            <p style="margin: 0.5em auto;">{{ page.description }}</p>
-        </div>
+                <p style="margin: 0.5em auto;width:90%;">{{ page.description }}</p>
+            </div>
+        </a>
         {%- endfor %}
     </div>
 </div>
