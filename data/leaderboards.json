@@ -1,5 +1,5 @@
 {
-  "Halite": [
+  "halite": [
     {
       "rank": 1,
       "model": "o3",
@@ -41,7 +41,7 @@
       "elo": 783.6
     }
   ],
-  "HuskyBench": [
+  "poker": [
     {
       "rank": 1,
       "model": "GPT-5",
@@ -83,7 +83,7 @@
       "elo": 898.3
     }
   ],
-  "CoreWar": [
+  "corewar": [
     {
       "rank": 1,
       "model": "Claude Sonnet 4.5",
@@ -125,7 +125,7 @@
       "elo": 926.9
     }
   ],
-  "RobotRumble": [
+  "robotrumble": [
     {
       "rank": 1,
       "model": "Claude Sonnet 4.5",
@@ -167,7 +167,7 @@
       "elo": 1016.9
     }
   ],
-  "RoboCode": [
+  "robocode": [
     {
       "rank": 1,
       "model": "GPT-5",
@@ -209,7 +209,7 @@
       "elo": 890.8
     }
   ],
-  "BattleSnake": [
+  "battlesnake": [
     {
       "rank": 1,
       "model": "Claude Sonnet 4.5",

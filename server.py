@@ -26,12 +26,13 @@ markdown_manager = Markdown(app, extensions=['fenced_code'], output_format='html
 
 pages_insights = [p for p in pages if p.path.startswith('insights/')]
 pages_arenas = [p for p in pages if p.path.startswith('arenas/')]
+with open("data/leaderboards.json") as f:
+    leaderboards = json.load(f)
 
 # Routes
 @app.route('/')
 def index():
-    with open('data/leaderboards.json') as leaderboards:
-        return render_template('index.html', leaderboards=json.load(leaderboards))
+   return render_template('index.html', leaderboard=leaderboards["ALL"])
 
 @app.route('/<path:path>/')
 def page(path):
@@ -59,7 +60,11 @@ def arenas():
 
 @app.route('/arenas/<path:path>/')
 def arena(path):
-    return render_template('arena.html', page=pages.get_or_404('arenas/' + path))
+    return render_template(
+        'arena.html',
+        page=pages.get_or_404('arenas/' + path),
+        leaderboard=leaderboards.get(path, []),
+    )
 
 @app.errorhandler(404)
 def page_not_found(path):
