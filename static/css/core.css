@@ -1,6 +1,7 @@
 /* Fonts */
 @import 'inter/inter.css';
 @import 'jersey/jersey.css';
+@import 'anta/anta.css';
 
 /**
  * Design tokens and CSS variables
@@ -18,6 +19,7 @@
   /* Typography */
   --font-primary: 'Inter', sans-serif;
   --font-jersey: 'Jersey', serif;
+  --font-anta: 'Anta', sans-serif;
 
   /* Font sizes */
   --text-xs: 0.75rem;    /* 12px */
