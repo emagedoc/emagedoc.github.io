@@ -1,9 +1,11 @@
 /* Main styling */
 html, body {
-    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: var(--text-base);
     background: var(--bg);
     color: var(--fg);
+    line-height: 1.6;
 }
 
 body {
@@ -53,7 +55,7 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 .nav-links li {
@@ -88,9 +90,20 @@ nav {
 }
 
 /* Leaderboard Table */
+.bordered {
+    background: transparent;
+    border: 1px solid var(--border);
+    transition: border-color 0.15s ease;
+}
+
+.bordered:hover {
+    border-color: var(--accent);
+}
+
 .leaderboard-table {
     width: 100%;
     border-collapse: collapse;
+    font-size: var(--text-sm);
 }
 
 .leaderboard-table th,
@@ -258,7 +271,6 @@ pre {
     padding: 1rem;
     overflow-x: auto;
     font-size: var(--text-sm);
-    line-height: 1.5;
     color: var(--fg);
 }
 

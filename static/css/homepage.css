@@ -5,6 +5,12 @@
     font-family: var(--font-anta);
 }
 
+.hsubtitle {
+    text-align: center;
+    font-family: var(--font-anta);
+    font-size: var(--text-xl);
+}
+
 .hborder {
     height: 0.25rem;
     border: none;
@@ -16,18 +22,12 @@
 .hsubtext {
     font-size: var(--text-md);
     color: var(--muted);
-    margin: 0.5em 0 1em 0;
-}
-
-.hsubtitle{
-    font-size: var(--text-xl);
-    color: var(--muted);
-    margin: 0.5em 0;
+    margin: 0.5em 0 2em 0;
 }
 
 .h2columns {
     display: grid;
-    grid-template-columns: 55% 38%;
+    grid-template-columns: 50% 50%;
     gap: 1.5rem;
     margin-top: 0;
     justify-content: center;
@@ -36,30 +36,34 @@
 .h3columns {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    gap: 2rem;
+    gap: 1rem;
     margin-top: 0;
 }
 
 .hfeature {
     border: 1px solid var(--border);
-    border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     margin-bottom: 0.5rem;
 }
 
 .hfeature span {
-    font-size: var(--text-md);
     font-weight: var(--weight-bold);
 }
 
-.hfeature svg {
+.hfeature img {
     height: 1rem;
     width: 1rem;
     vertical-align: middle;
     margin-right: 0.1em;
     display: inline-block;
     transform: translateY(-0.12em);
-    color: var(--accent);
+    /* Green filter for accent color */
+    filter: invert(57%) sepia(89%) saturate(1493%) hue-rotate(101deg) brightness(98%) contrast(101%);
+}
+
+:root[data-theme="dark"] .hfeature img {
+    /* Brighter green filter for dark mode accent */
+    filter: invert(85%) sepia(47%) saturate(1739%) hue-rotate(75deg) brightness(103%) contrast(102%);
 }
 
 .hfeature p {
@@ -67,7 +71,136 @@
     font-size: var(--text-sm);
 }
 
-.hthesis {
-    width: 60%;
+.hsection {
+    width: 70%;
     margin: 0 auto;
+}
+
+.preview-image {
+    width: 150%;
+    display: block;
+    content: url('/static/images/misc/preview.png');
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+:root[data-theme="dark"] .preview-image {
+    content: url('/static/images/misc/preview_light.png');
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-button {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--fg);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 800;
+    background: transparent;
+    transition: all 0.15s ease;
+}
+
+.cta-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in oklab, var(--accent) 6%, transparent);
+}
+
+.cta-button.primary {
+    border-color: var(--accent);
+    color: var(--bg);
+    background: var(--accent);
+}
+
+.cta-button.primary:hover {
+    background: color-mix(in oklab, var(--accent) 85%, var(--fg));
+}
+
+/* Logo Animations */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    margin-bottom: -10px;
+    position: relative;
+}
+.logo {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+}
+.logo-left {
+    animation: slideFromLeft 0.7s ease-out forwards;
+}
+.logo-right {
+    animation: slideFromRight 0.7s ease-out forwards;
+}
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-300px);
+    }
+    100% {
+        transform: translateX(-40px);
+    }
+}
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(300px);
+    }
+    100% {
+        transform: translateX(40px);
+    }
+}
+
+/* Title Word Animations */
+.title-word {
+    display: inline-block;
+}
+.title-code {
+    animation: codeMove 1.7s ease-in-out forwards;
+}
+.title-clash {
+    animation: clashMove 1.7s ease-in-out forwards;
+}
+@keyframes codeMove {
+    0%, 58.8% {
+        transform: translateX(0);
+    }
+    70.6% {
+        transform: translateX(-15px);
+    }
+    79.4% {
+        transform: translateX(8px);
+    }
+    88.2% {
+        transform: translateX(-3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes clashMove {
+    0%, 58.8% {
+        transform: translateX(0);
+    }
+    70.6% {
+        transform: translateX(15px);
+    }
+    79.4% {
+        transform: translateX(-8px);
+    }
+    88.2% {
+        transform: translateX(3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }

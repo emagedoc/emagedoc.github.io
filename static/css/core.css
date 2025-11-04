@@ -22,9 +22,9 @@
   --font-anta: 'Anta', sans-serif;
 
   /* Font sizes */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
+  --text-xs: 0.7rem;    /* 12px */
+  --text-sm: 0.8rem;   /* 14px */
+  --text-base: 0.925rem;     /* 16px */
   --text-md: 1.125rem;   /* 18px */
   --text-lg: 1.25rem;    /* 20px */
   --text-xl: 1.5rem;     /* 24px */
@@ -90,4 +90,19 @@
   justify-content: center;
   margin-bottom: 1em;
   padding: 2rem;
+}
+
+/* Logo styling for dark mode */
+img[src*="anthropic.svg"],
+img[src*="xai.svg"],
+img[src*="openai.svg"] {
+  /* No filter in light mode - keeps original colors */
+  filter: none;
+}
+
+:root[data-theme="dark"] img[src*="anthropic.svg"],
+:root[data-theme="dark"] img[src*="xai.svg"],
+:root[data-theme="dark"] img[src*="openai.svg"] {
+  /* White filter for dark mode */
+  filter: brightness(0) invert(1);
 }

@@ -3,13 +3,14 @@
 {% block title %}CodeClash - Evaluating LMs as Goal-Driven Developers{% endblock %}
 
 {% block content %}
-<section style="text-align:center;">
-    <img
-        src="/static/images/logos/clash.svg"
-        alt="CodeClash Logo"
-        style="height: 8rem; margin: 1em 0 0.5em 0;"
-    />
-    <p class="htitle">CodeClash</p>
+<section style="text-align:center;margin-top: 3em;">
+<div class="logo-container">
+        <img src="/static/images/logos/clash_r.svg" alt="CodeClash Logo Left" class="logo logo-left">
+        <img src="/static/images/logos/clash_g.svg" alt="CodeClash Logo Right" class="logo logo-right">
+    </div>
+    <p class="htitle">
+        <span class="title-word title-code">Code</span><span class="title-word title-clash">Clash</span>
+    </p>
     <p class="hsubtext">Benchmarking Goal-Oriented Software Engineering</p>
 </section>
 
@@ -17,38 +18,31 @@
 
 <div class="h2columns">
     <div>
-        <p class="hsubtitle">Leaderboard</p>
-        <div>
+        <p class="hsubtitle" style="margin-top: 0em;">Leaderboard</p>
+        <div class="bordered">
             {% include "_leaderboard.html" %}
         </div>
     </div>
     <div>
-        <p class="hsubtitle">Features</p>
+        <p class="hsubtitle" style="margin-top: 0em;">Features</p>
         <div>
             <div class="hfeature">
                 <span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <circle cx="12" cy="12" r="6"></circle>
-                        <circle cx="12" cy="12" r="2"></circle>
-                    </svg>
+                    <img src="/static/images/misc/target.svg" />
                     Goals, not tasks
                 </span>
-                <p>
-                    No more explicit GitHub issues or specific tasks.
-                    Models must understand high-level objectives and
+                <p class="subtext">
+                    No explicit GitHub issues or tasks.
+                    Given just a high-level objective, models
                     decide for themselves what to build.
                 </p>
             </div>
             <div class="hfeature">
                 <span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="23 4 23 10 17 10"></polyline>
-                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-                    </svg>
+                    <img src="/static/images/misc/rewind.svg" />
                     Progress, not perfection
                 </span>
-                <p>
+                <p class="subtext">
                     Models evolve their codebases across multiple rounds,
                     analyze gigabytes of logs, adapt strategies, implement algorithms,
                     and make all high- to low-level decisions.
@@ -56,14 +50,10 @@
             </div>
             <div class="hfeature">
                 <span>
-                    <svg viewBox="0 0 290.226 290.226" fill="currentColor">
-                        <path d="M63.951,243.575c-1.945-3.578-4.401-6.907-7.363-9.869c-3.106-3.102-6.626-5.633-10.4-7.63 c-4.51-2.387-0.945-7.5-0.945-7.5c4.616-7.023,8.825-14.079,12.305-20.226l-23.363-23.344H11.504c-4.362,0-7.898-3.539-7.898-7.902 c0-4.361,3.536-7.9,7.898-7.9h25.947c2.1,0,4.107,0.832,5.588,2.312l85.379,85.291c1.483,1.483,2.315,3.495,2.315,5.589v26.073 c0,4.365-3.537,7.897-7.9,7.897c-4.367,0-7.904-3.531-7.904-7.897v-22.798l-23.27-23.24c-6.281,3.707-13.582,8.252-20.816,13.25 C70.842,245.679,66.698,248.629,63.951,243.575z"></path>
-                        <path d="M26.61,237.102c-7.106,0-13.784,2.764-18.812,7.784c-5.019,5.015-7.782,11.686-7.782,18.778 c0,7.097,2.764,13.762,7.782,18.776c5.027,5.016,11.706,7.783,18.812,7.785c7.102,0,13.781-2.77,18.804-7.785 c5.023-5.015,7.79-11.682,7.79-18.776c0-7.093-2.768-13.764-7.79-18.778C40.392,239.866,33.712,237.102,26.61,237.102z"></path>
-                        <path d="M100.985,182.318c-3.502,3.499-9.232,3.499-12.734,0.001l-8.81-8.801c-3.502-3.498-3.502-9.223,0-12.721L229.832,10.564 c3.502-3.498,10.401-6.727,15.33-7.175l36.862-3.352c4.93-0.448,8.596,3.218,8.148,8.148l-3.346,36.791 c-0.448,4.93-3.68,11.825-7.182,15.324l-150.4,150.251c-3.502,3.498-9.232,3.498-12.734,0l-8.822-8.813 c-3.502-3.498-3.502-9.223,0-12.722L233.608,63.213c1.854-1.848,1.856-4.852,0.003-6.702c-1.848-1.853-4.853-1.853-6.709-0.002 L100.985,182.318z"></path>
-                    </svg>
+                    <img src="/static/images/misc/sword.svg" />
                     Competition, not unit tests
                 </span>
-                <p>
+                <p class="subtext">
                     Models compete via their codebases in arenas where success is
                     measured by relative scores like income, territory control, survival.
                 </p>
@@ -74,8 +64,8 @@
 
 <hr class="hborder" />
 
-<section class="hthesis">
-    <h2 style="text-align: center;">Why CodeClash?</h2>
+<section class="hsection">
+    <p class="hsubtitle">Why CodeClash?</p>
     <p>
         LMs have gotten pretty good at solving GitHub issues.
         <a href="http://swebench.com/">
@@ -87,84 +77,101 @@
         </a>
     </p>
     <p>But real software development isn't a series of isolated tasks.</p>
-    <p>It's driven by <i>goals</i>.</p>
+    <p><strong>It's driven by <i>goals</i>.</strong></p>
     <p>
         Improve user retention, increase revenue, reduce costs.
         We build to achieve outcomes, not to close tickets.
     </p>
     <p>What if AI evaluations reflected this dynamism of real-world software development?</p>
-    <p>We introduce CodeClash, an initial effort towards benchmarking goal-oriented software engineering</p>
+    <p><strong>We introduce CodeClash, an initial effort towards benchmarking goal-oriented software engineering</strong></p>
 </section>
 
 <hr class="hborder" />
 
-<section class="hthesis">
-    <h2 style="text-align: center;">Our Results</h2>
+<section class="hsection">
+    <p class="hsubtitle">What is CodeClash?</p>
+    <img src="/static/images/misc/preview.png" class="preview-image" alt="CodeClash Preview" />
+    <p style="margin-top: 2em;">In CodeClash, models build and evolve their own codebase over multiple rounds.</p>
+    <p>Each round has two phases: edit, then compete.</p>
     <p>
-        In CodeClash, language models build and evolve their own codebase over multiple rounds.
-        Each round has two phases: edit, then compete. Models can write notes, analyze past rounds,
-        build and execute test suites, refactor code—whatever they think will help.
-        <strong>Then their codebases face off in an arena.</strong>
-        The output logs of the arena are copied back to the model's codebase and the next round begins.
-        The winner of the tournament is the model that won the most rounds.
+        In the edit phase, models get to improve their codebase as they see fit.
+        Write notes, analyze past rounds, run test suites, refactor code -- whatever helps.
     </p>
     <p>
-        Our analysis of 50k trajectories reveals that models are still severely limited
-        in solving problems beyond specific tickets:
+        <strong>Then, they compete.</strong>
+        Models' codebases face off in an arena.
+    </p>
+    </p>
+        Competition logs are then copied back to each model's codebase and the next round begins.
+    </p>
+    <p>
+        The model that wins the most rounds is declared winner.
+    </p>
+</section>
+
+<hr class="hborder" />
+
+<section class="hsection">
+    <p class="hsubtitle">Our Results</p>
+    <p>
+        We evaluate 8 models on 6 arenas across 1680 tournaments at 15 rounds each (25,200 rounds total),
+        generating 50k agent trajectories in the process.
+    </p>
+    <p>
+        Our analysis reveals many directions for improvement.
     </p>
 </section>
 <div class="h3columns">
     <div class="hfeature">
-        <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            Far from Humans
-        </span>
-        <p>
+        <span><img src="/static/images/misc/profile.svg" /> Far from Humans</span>
+        <p class="subtext">
             On RobotRumble, the worst human solution still beats the best LM by miles.
-            Against other human solutions, the best LM does not even have a chance,
-            not scoring a single point out of thousands.
+            Read <a href="/insights/20251105_human_ai/">more</a>.
         </p>
     </div>
     <div class="hfeature">
-        <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
-            </svg>
-            Unable to Iterate
-        </span>
-        <p>
-            Models fail to analyze previous rounds for their shortcomings,
-            hallucinate about failure reasons, and fail to improve meaningfully over time.
+        <span><img src="/static/images/misc/loop.svg" /> Unable to Iterate</span>
+        <p class="subtext">
+            Models struggle to improve over rounds, exhibiting a variety of failure modes.
         </p>
     </div>
     <div class="hfeature">
-        <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-            </svg>
-            Decaying codebases
-        </span>
-        <p>
-            Models add features without thinking, never remove old code, and fail at long-term maintenance. Technical debt accumulates rapidly.
+        <span><img src="/static/images/misc/cube.svg" /> Decaying codebases</span>
+        <p class="subtext">
+            Model codebases accumulate tech debt and become messy rapidly.
+            See <a href="#">examples</a>.
         </p>
     </div>
 </div>
 
-<section>
-    <p>
-        CodeClash is fully open-source, as are its 50k agent trajectories
-    </p>
+<hr class="hborder" />
+
+ <section class="hsection" style="text-align: center;margin-bottom: 2em;">
+    <p>CodeClash is fully open-source.</p>
     
-    <div>
-        <a href="#">Read the Paper</a>
-        <a href="#">View on GitHub</a>
-        <a href="/arenas/">Explore Arenas</a>
-        <a href="#">Explore Trajectories</a>
+    <div class="cta-buttons">
+        <a href="#" class="cta-button primary">Read the Paper</a>
+        <a href="#" class="cta-button">View on GitHub</a>
+        <a href="#" class="cta-button">Explore Arenas</a>
+        <a href="#" class="cta-button">Explore Trajectories</a>
     </div>
-</section>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Randomly reverse logo animation direction
+    (function () {
+        var logoLeft = document.querySelector('.logo-left');
+        var logoRight = document.querySelector('.logo-right');
+        
+        if (Math.random() < 0.5 && logoLeft && logoRight) {
+            // Swap the animation classes
+            logoLeft.classList.remove('logo-left');
+            logoLeft.classList.add('logo-right');
+            logoRight.classList.remove('logo-right');
+            logoRight.classList.add('logo-left');
+        }
+    })();
+</script>
 {% endblock %}

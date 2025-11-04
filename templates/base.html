@@ -6,6 +6,17 @@
     <title>{% block title %}CodeClash{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="icon" type="image/svg" href="{{ url_for('static', filename='images/logos/clash.svg') }}">
+    <script>
+        // Set theme immediately to prevent flash
+        (function() {
+            var stored = null;
+            try { stored = localStorage.getItem('theme'); } catch (e) {}
+            if (!stored) {
+                stored = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', stored);
+        })();
+    </script>
     {% block head_extra %}{% endblock %}
 </head>
 <body>
@@ -98,5 +109,9 @@
             });
         });
     </script>
+
+    {% block scripts %}
+    <!-- Custom JavaScript will go here -->
+    {% endblock %}
 </body>
 </html>
