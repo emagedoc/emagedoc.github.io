@@ -5,7 +5,7 @@
 {% block content %}
 <section style="text-align:center;">
     <img
-        src="/static/images/clash_new.svg"
+        src="/static/images/logos/clash.svg"
         alt="CodeClash Logo"
         style="height: 8rem; margin: 1em 0 0.5em 0;"
     />
@@ -76,12 +76,30 @@
 
 <section class="hthesis">
     <h2 style="text-align: center;">Why CodeClash?</h2>
-    <p>LMs have gotten pretty good at solving GitHub issues.</p>
     <p>
-        But real software development isn't a series of isolated tasks. 
-        It's about understanding higher order goals, making tradeoffs, and evolving a codebase over time.
+        LMs have gotten pretty good at solving GitHub issues.
+        <a href="http://swebench.com/">
+            <img
+                src="/static/images/logos/swe-llama.svg"
+                alt="SWEBench Logo"
+                style="height:1em; margin-left:0.2em;"
+            />
+        </a>
     </p>
-    <p>With CodeClash, we're moving from task-oriented to goal-oriented software development.</p>
+    <p>But real software development isn't a series of isolated tasks.</p>
+    <p>It's driven by <i>goals</i>.</p>
+    <p>
+        Improve user retention, increase revenue, reduce costs.
+        We build to achieve outcomes, not to close tickets.
+    </p>
+    <p>What if AI evaluations reflected this dynamism of real-world software development?</p>
+    <p>We introduce CodeClash, an initial effort towards benchmarking goal-oriented software engineering</p>
+</section>
+
+<hr />
+
+<section class="hthesis">
+    <h2 style="text-align: center;">Our Results</h2>
     <p>
         In CodeClash, language models build and evolve their own codebase over multiple rounds.
         Each round has two phases: edit, then compete. Models can write notes, analyze past rounds,
@@ -95,7 +113,6 @@
         in solving problems beyond specific tickets:
     </p>
 </section>
-
 <div class="h3columns">
     <div class="hfeature">
         <span>
