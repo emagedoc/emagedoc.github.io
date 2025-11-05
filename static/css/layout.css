@@ -89,6 +89,13 @@ nav {
     margin-right: 1rem;
 }
 
+.nav-links .external-link li::after {
+    content: "↗";
+    font-size: 0.7em;
+    vertical-align: super;
+    margin-left: 0.1em;
+}
+
 .icon-btn {
     display: inline-flex;
     align-items: center;
