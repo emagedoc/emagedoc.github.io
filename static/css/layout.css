@@ -116,8 +116,10 @@ nav {
 .nav-links .external-link li::after {
     content: "↗";
     font-size: 0.7em;
-    vertical-align: super;
+    vertical-align: baseline;
     margin-left: 0.1em;
+    position: relative;
+    top: -0.3em;
 }
 
 .icon-btn {
