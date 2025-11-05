@@ -228,6 +228,7 @@ nav {
 .insight-page {
     margin: 0 auto;
     width: 75%;
+    padding-bottom: 3em;
 }
 
 /* Arenas grid */
