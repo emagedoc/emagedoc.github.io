@@ -201,9 +201,23 @@ nav {
 }
 
 /* Insights */
+.insights-container {
+    width: 75%;
+    margin: 0 auto;
+}
+
 .insight-card {
     padding-bottom: 2em;
     line-height: 1.4;
+}
+
+.insight-card a {
+    transition: color 0.3s;
+}
+
+.insight-card a:hover {
+    color: var(--accent);
+    border-bottom-color: transparent;
 }
 
 .insight-card p {
@@ -233,7 +247,7 @@ nav {
 
 /* Arenas grid */
 .arenas-container {
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
 }
 
 .arenas-grid {
@@ -281,6 +295,11 @@ nav {
 }
 
 /* Team grid */
+.team-container {
+    width: 75%;
+    margin: 0 auto;
+}
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

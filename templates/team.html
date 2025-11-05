@@ -2,9 +2,12 @@
 
 {% block content %}
 <div class="hero">
+    <img src="/static/images/logos/clash_g.svg" alt="Clash Green">
     <h1>Team</h1>
+    <img src="/static/images/logos/clash_r.svg" alt="Clash Red">
 </div>
 
+<div class="team-container">
 <div class="team-grid">
 {% for contributor in data.contributors %}
     <a href="{{ contributor.link }}" class="team-card">
@@ -23,7 +26,7 @@
 {% endfor %}
 </div>
 
-<div style="width:95%; margin:0 auto; display:flex; flex-direction:column;">
+<div style="display:flex; flex-direction:column;">
 <h3 style="margin: 1.5em 0 1em 0">Get in Touch</h3>
 <span>
 We're excited about future work on CodeClash!
@@ -49,5 +52,7 @@ CodeClash was built with the support of the following organizations.
     </a>
 {% endfor %}
 </div>
+</div>
+
 </div>
 {% endblock content %}
