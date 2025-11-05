@@ -3,6 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <link rel="canonical" href="https://codeclash.ai/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CodeClash" />
+    <meta property="og:url" content="https://codeclash.ai/" />
+    <meta property="og:image" content="https://codeclash.ai/static/images/misc/share.svg">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CodeClash" />
+    <meta name="twitter:description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <meta name="twitter:image" content="https://codeclash.ai/static/images/misc/share.svg" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8Q0B783CD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N8Q0B783CD');
+    </script>
+
     <title>{% block title %}CodeClash{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="icon" type="image/svg" href="{{ url_for('static', filename='images/logos/clash.svg') }}">
