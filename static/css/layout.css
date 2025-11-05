@@ -365,13 +365,23 @@ nav {
 
 /* Code blocks */
 pre {
-    background-color: var(--bg);
+    background-color: var(--bg) !important;
     border: 1px solid var(--border);
     border-radius: 0.5em;
     padding: 1rem;
     overflow-x: auto;
     font-size: var(--text-sm);
     color: var(--fg);
+}
+
+pre.prettyprint {
+    background-color: var(--bg) !important;
+    padding: 1rem !important
+}
+
+:root[data-theme="dark"] pre,
+:root[data-theme="dark"] pre.prettyprint {
+    background-color: var(--fg) !important;
 }
 
 pre p {
