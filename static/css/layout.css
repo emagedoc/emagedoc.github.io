@@ -75,6 +75,9 @@ nav {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+    margin: 0;           /* reset default ul margin to avoid right-shift */
+    padding: 0;          /* reset default ul padding to truly center items */
+    margin-block: 0.75rem; /* restore comfortable top/bottom spacing */
     gap: 1rem;
 }
 
