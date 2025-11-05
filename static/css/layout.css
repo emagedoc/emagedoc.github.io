@@ -75,6 +75,9 @@ nav {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+    margin: 0;           /* reset default ul margin to avoid right-shift */
+    padding: 0;          /* reset default ul padding to truly center items */
+    margin-block: 0.75rem; /* restore comfortable top/bottom spacing */
     gap: 1rem;
 }
 
@@ -188,12 +191,7 @@ nav {
 .bordered {
     background: transparent;
     border: 1px solid var(--border);
-    transition: border-color 0.15s ease;
     padding: 0 0.5em;
-}
-
-.bordered:hover {
-    border-color: var(--accent);
 }
 
 .leaderboard-table {
@@ -213,7 +211,7 @@ nav {
 }
 
 .leaderboard-table tbody tr {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border);
 }
 
 .leaderboard-table td:first-child,
