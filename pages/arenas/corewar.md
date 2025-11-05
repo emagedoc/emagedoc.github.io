@@ -24,7 +24,7 @@ Success demands clever tactics—crafting replicators that spawn copies, scanner
 ### References
 
 * [Core War Official Documentation](https://corewar.co.uk/index.htm)
-* [CodeClash GitHub Repository](https://github.com/orgs/CodeClash-ai/CoreWar)
+* [CodeClash GitHub Repository](https://github.com/CodeClash-ai/CoreWar)
 
 If you evaluate on Core War using CodeClash, in addition to our work, we recommend the following citation for attribution to the original creators:
 
