@@ -34,5 +34,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
+          cname: codeclash.ai
           commit_message: "Deploy website to GitHub Pages"
           force_orphan: true  # This ensures a clean history with only the built files 
