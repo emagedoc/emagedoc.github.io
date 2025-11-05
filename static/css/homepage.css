@@ -27,18 +27,36 @@
 }
 
 .h2columns {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 0;
+    padding: 0 1rem;
     justify-content: center;
 }
 
+.h2columns > div {
+    flex: 1 1 45%;
+    min-width: 300px;
+}
+
 .h3columns {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 0;
+    padding: 0 1rem;
+    justify-content: center;
+}
+
+.h3columns > div {
+    flex: 1 1 0;
+}
+
+@media (max-width: 600px) {
+    .h3columns > div {
+        flex: 1 1 100%;
+    }
 }
 
 .hfeature {
