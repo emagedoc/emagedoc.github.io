@@ -216,7 +216,7 @@ nav {
 }
 
 .leaderboard-table tbody tr {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border);
 }
 
 .leaderboard-table td:first-child,
