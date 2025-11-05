@@ -273,6 +273,17 @@ nav {
     padding-bottom: 3em;
 }
 
+.insight-page a {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--fg);
+}
+
+.insight-page a:hover {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
 /* Arenas grid */
 .arenas-container {
     padding: 0 1rem 1rem 1rem;

@@ -76,6 +76,12 @@
     margin-right: 0.1em;
     display: inline-block;
     transform: translateY(-0.12em);
+    filter: none;
+}
+
+:root[data-theme="dark"] .hfeature img {
+    /* Force SVG icons to render white in dark mode */
+    filter: brightness(0) invert(1) !important;
 }
 
 .hfeature p {
