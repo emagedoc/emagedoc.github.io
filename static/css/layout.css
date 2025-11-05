@@ -85,6 +85,21 @@ nav {
     gap: 0.5rem;
 }
 
+.nav-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.nav-group .external-link::after {
+    content: "↗";
+    font-size: 0.7em;
+    vertical-align: super;
+    margin-left: 0.1em;
+}
+
 .nav-icons {
     display: flex;
     align-items: center;
@@ -99,15 +114,8 @@ nav {
     margin-left: 0;
 }
 
-.nav-right .nav-links {
-    margin-right: 1rem;
-}
-
-.nav-links .external-link li::after {
-    content: "↗";
-    font-size: 0.7em;
-    vertical-align: super;
-    margin-left: 0.1em;
+.nav-right .nav-group:not(:last-child) {
+    margin-right: 0.5rem;
 }
 
 .icon-btn {
@@ -453,10 +461,6 @@ blockquote {
         justify-content: flex-end;
     }
 
-    .nav-right .nav-links {
-        margin-right: 0.5rem;
-    }
-
     .insights-container,
     .insight-page,
     .team-container {
@@ -469,26 +473,32 @@ blockquote {
         padding: 0.5em 0.25em;
         margin: 0 0.25em;
         justify-content: center;
+        gap: 0.25rem;
+        row-gap: 0.25rem;
     }
 
     .nav-left {
         flex: 0 0 100%;
         justify-content: center;
-        margin-bottom: 0.5rem;
     }
 
     .nav-right {
-        flex: 1 1 auto;
+        flex: 1 1 100%;
         justify-content: center;
+        gap: 0.5rem;
+        row-gap: 0.25rem;
     }
 
-    .nav-right .nav-links {
-        margin-right: 0;
-        justify-content: center;
-    }
-
-    .nav-links {
+    .nav-group {
+        flex: 0 0 auto;
         gap: 0.75rem;
+    }
+
+    .nav-group-1,
+    .nav-group-2,
+    .nav-icons {
+        flex-basis: 100%;
+        justify-content: center;
     }
 
     .nav-icons {
