@@ -7,7 +7,13 @@
   <p class="subtext">{{ page.description }}</p>
   <span>
   {% if page.date %}{{ page.date | format_timestamp }} &bull;{% endif %}
-  {% if page.authors %}by {{ page.authors }}{% endif %}
+  {% if page.authors %}
+    by 
+    {% set author_list = page.authors.split(', ') %}
+    {% for author in author_list %}
+      <a href="{{ url_for('team') }}">{{ author }}</a>{% if not loop.last %}, {% endif %}
+    {% endfor %}
+  {% endif %}
   </span>
 </div>
 <br>
