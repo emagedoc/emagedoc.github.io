@@ -191,12 +191,7 @@ nav {
 .bordered {
     background: transparent;
     border: 1px solid var(--border);
-    transition: border-color 0.15s ease;
     padding: 0 0.5em;
-}
-
-.bordered:hover {
-    border-color: var(--accent);
 }
 
 .leaderboard-table {

@@ -76,13 +76,6 @@
     margin-right: 0.1em;
     display: inline-block;
     transform: translateY(-0.12em);
-    /* Green filter for accent color */
-    filter: invert(57%) sepia(89%) saturate(1493%) hue-rotate(101deg) brightness(98%) contrast(101%);
-}
-
-:root[data-theme="dark"] .hfeature img {
-    /* Brighter green filter for dark mode accent */
-    filter: invert(85%) sepia(47%) saturate(1739%) hue-rotate(75deg) brightness(103%) contrast(102%);
 }
 
 .hfeature p {
