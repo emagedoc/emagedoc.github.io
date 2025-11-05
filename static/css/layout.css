@@ -242,6 +242,10 @@ nav {
     gap: 1rem;
 }
 
+.arenas-grid a:hover {
+    border-bottom-color: transparent;
+}
+
 .arena-card {
     display: flex;
     flex-direction: column;
@@ -256,6 +260,7 @@ nav {
 .arena-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border-bottom-color: transparent;
 }
 
 .arena-title {
