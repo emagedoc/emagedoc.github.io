@@ -25,7 +25,7 @@ Success requires balancing movement, targeting, and radar control. You must pred
 
 * [RoboCode Official Repository](https://github.com/robo-code/robocode)
 * [RoboCode Website](https://robocode.sourceforge.io/)
-* [CodeClash GitHub Repository](https://github.com/orgs/CodeClash-ai/RoboCode)
+* [CodeClash GitHub Repository](https://github.com/CodeClash-ai/RoboCode)
 
 If you evaluate on RoboCode using CodeClash, in addition to our work, we recommend the following citation for attribution to the original creators:
 

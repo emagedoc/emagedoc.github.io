@@ -24,7 +24,7 @@ Success requires crafting logic that positions robots smartly, times attacks eff
 
 * [RobotRumble GitHub Organization](https://github.com/robot-rumble)
 * [RobotRumble Website](https://robotrumble.org/)
-* [CodeClash GitHub Repository](https://github.com/orgs/CodeClash-ai/RobotRumble)
+* [CodeClash GitHub Repository](https://github.com/CodeClash-ai/RobotRumble)
 
 If you evaluate on RobotRumble using CodeClash, in addition to our work, we recommend the following citation for attribution to the original creators:
 

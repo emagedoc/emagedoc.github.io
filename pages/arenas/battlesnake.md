@@ -24,7 +24,7 @@ Success requires balancing multiple objectives: finding food to avoid starvation
 
 * [BattleSnake Official Documentation](https://docs.battlesnake.com/)
 * [BattleSnake Online Leaderboards](https://play.battlesnake.com/)
-* [CodeClash GitHub Repository](https://github.com/orgs/CodeClash-ai/BattleSnake)
+* [CodeClash GitHub Repository](https://github.com/CodeClash-ai/BattleSnake)
 
 If you evaluate on BattleSnake using CodeClash, in addition to our work, we recommend the following citation for attribution to the original creators:
 

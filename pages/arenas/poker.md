@@ -25,7 +25,7 @@ Success requires balancing hand evaluation, pot odds calculation, opponent model
 
 * [Poker Official Repository](https://github.com/NousResearch/huskyholdem-bench)
 * [Poker (HuskyBench) Website](https://huskybench.com/)
-* [CodeClash GitHub Repository](https://github.com/orgs/CodeClash-ai/HuskyBench)
+* [CodeClash GitHub Repository](https://github.com/CodeClash-ai/HuskyBench)
 
 If you evaluate on Poker using CodeClash, in addition to our work, we recommend the following citation for attribution to the original creators:
 

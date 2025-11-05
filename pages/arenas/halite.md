@@ -25,7 +25,7 @@ Success demands strategic expansion planning, efficient resource distribution, a
 
 * [Halite Official Repository](https://github.com/HaliteChallenge/Halite)
 * [Halite Website](https://halite-tournament.fly.dev/)
-* [CodeClash GitHub Repository](https://github.com/orgs/CodeClash-ai/Halite)
+* [CodeClash GitHub Repository](https://github.com/CodeClash-ai/Halite)
 
 If you evaluate on Halite using CodeClash, in addition to our work, we recommend the following citation for attribution to the original creators:
 
