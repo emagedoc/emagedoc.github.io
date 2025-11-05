@@ -78,6 +78,13 @@ nav {
     gap: 1rem;
 }
 
+.nav-group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
 .nav-right {
     display: flex;
     align-items: center;
