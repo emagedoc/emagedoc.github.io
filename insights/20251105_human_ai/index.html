@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <link rel="canonical" href="https://codeclash.ai/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CodeClash" />
+    <meta property="og:description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <meta property="og:url" content="https://codeclash.ai/" />
+    <meta property="og:image" content="https://codeclash.ai/static/images/misc/share.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8Q0B783CD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N8Q0B783CD');
+    </script>
+
+    <title>CodeClash</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link rel="icon" type="image/svg" href="../../static/images/logos/clash.svg">
+    <script>
+        // Set theme immediately to prevent flash
+        (function() {
+            var stored = null;
+            try { stored = localStorage.getItem('theme'); } catch (e) {}
+            if (!stored) {
+                stored = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', stored);
+        })();
+    </script>
+    
+</head>
+<body>
+    <nav>
+    <div class="nav-left">
+        <a href="/"><span>CodeClash</span></a>
+    </div>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <div class="nav-group">
+                <a href="/arenas/"><li>Arenas</li></a>
+                <a href="https://docs.codeclash.ai" class="external-link" target="_blank" rel="noopener noreferrer"><li>Docs</li></a>
+                <a href="/insights/"><li>Insights</li></a>
+            </div>
+            <div class="nav-group">
+                <a href="https://arxiv.org/pdf/2511.00839.pdf" class="external-link"><li>Paper</li></a>
+                <a href="/team/"><li>Team</li></a>
+                <a href="https://viewer.codeclash.ai" class="external-link"><li>Trajectories</li></a>
+            </div>
+        </ul>
+        <div class="nav-icons">
+            <a href="https://github.com/codeclash-ai/codeclash" class="icon-btn" aria-label="GitHub" title="Check out our code on GitHub" target="_blank" rel="noopener noreferrer">
+                <img src="/static/images/logos/github-mark.svg" class="theme-icon" alt="GitHub" />
+            </a>
+            <a href="https://join.slack.com/t/swe-bench/shared_invite/zt-36pj9bu5s-o3_yXPZbaH2wVnxnss1EkQ" class="icon-btn" aria-label="Slack" title="Join us on Slack" target="_blank" rel="noopener noreferrer">
+                <img src="/static/images/logos/slack.svg" class="theme-icon" alt="Slack" />
+            </a>
+            <button
+                id="theme-toggle"
+                class="theme-toggle"
+                aria-label="Toggle theme"
+                title="Toggle dark/bright mode"
+            >
+                <img src="/static/images/misc/sun.svg" class="theme-icon sun-icon" alt="Light mode" />
+                <img src="/static/images/misc/moon.svg" class="theme-icon moon-icon" alt="Dark mode" />
+            </button>
+        </div>
+    </div>
+</nav>
+
+    
+<br>
+<div style="text-align:center;">
+  <h2>Humans &amp; AI [Ep. 1] - Gigachad Strikes</h2>
+  <p class="subtext">Where does AI rank among human programmers on RobotRumble?</p>
+  <span>
+  Nov. 5, 2025 &bull;
+  
+    by 
+    
+    
+      <a href="../../team/index.html">John Yang</a>
+    
+  
+  </span>
+</div>
+<br>
+<hr />
+
+<div class="insight-page">
+  <p>We're particularly excited about using CodeClash as a platform to explore collaboration and competition among human and AI programmers.</p>
+<p>In the inaugural blog post of this series, we aim to answer a simple question: <em>Where does AI rank among human competitors?</em></p>
+<p>We decided, the simplest way to address this, is find top-ranked, human-written submissions from existing leaderboards and pit them against LMs.</p>
+<h2>Finding Top Submissions</h2>
+<p>To investigate this, we scoured the web for online leaderboards of the code arenas supported in CodeClash.
+This was surprisingly challenging:</p>
+<ul>
+<li>We couldn't find leaderboards for some arenas (<a href="/arenas/corewar/">Core War</a>, <a href="/arenas/robocode/">RoboCode</a>).</li>
+<li><a href="/arenas/poker/">Poker (HuskyBench)</a> has a great <a href="https://huskybench.com/">website</a>, but as an LM evaluation, there's no human-written submissions.</li>
+<li><a href="/arenas/halite/">Halite</a> probably has a leaderboard somewhere, but we couldn't find it. The one on the <a href="https://halite-tournament.fly.dev/leaderboard/">resurrected website</a> seems to be filled with test bots.<ul>
+<li>Halite III (which we'll support soon) has a Kaggle <a href="https://www.kaggle.com/c/halite/leaderboard">leaderboard</a>.</li>
+</ul>
+</li>
+<li><a href="https://play.battlesnake.com/leaderboards">BattleSnake</a> has an awesome, active official leaderboard with ranked submissions. <em>But</em> most submissions are closed source, and we couldn't find a way to filter for open source bots only.</li>
+</ul>
+<p><a href="/arenas/robotrumble/">RobotRumble</a> ended up being the only arena with a <a href="https://robotrumble.org/boards/2">leaderboard</a> that fit our search criteria:</p>
+<ul>
+<li>Has many human-written submissions</li>
+<li>The submissions are ranked</li>
+<li>Some submissions are open source</li>
+</ul>
+<p><img src="/static/images/insights/20251108_human_ai/leaderboard_20251031.png" class="img-insight" /></p>
+<p>As of October 31, 2025, the top-ranked open-source submission on RobotRumble is
+<img src="/static/images/insights/20251108_human_ai/gigachad.jpg" class="img-inline" style="height:1.2rem;margin-right:0em;" />
+<strong>gigachad</strong> by user <strong>entropic-drifter</strong> (<a href="https://robotrumble.org/entropicdrifter/gigachad">link</a>).</p>
+<h2>The Showdown</h2>
+<p>We ran CodeClash tournaments between <img src="/static/images/insights/20251108_human_ai/gigachad.jpg" class="img-inline" style="height:1.2rem;margin-right:0em;" />
+<strong>gigachad</strong> and Claude Sonnet 4.5, the top ranked LM on RobotRumble as of 11/2025.
+The details:</p>
+<ul>
+<li>Ran 10 tournaments of 15 rounds each</li>
+<li>Each round's competition phase ran 250 simulations</li>
+<li>Claude 4.5 Sonnet was ran with temperature 0.2 and max tokens 4096</li>
+<li>Claude 4.5 Sonnet uses <a href="https://mini-swe-agent.com/latest/">mini-swe-agent</a> as the agent scaffold</li>
+<li>On the other hand, <img src="/static/images/insights/20251108_human_ai/gigachad.jpg" class="img-inline" style="height:1.2rem;margin-right:0em;" />
+<strong>gigachad</strong> is held <em>constant</em> across all tournaments. In other words, no human or LM is optimizing <strong>gigachad</strong> between rounds.</li>
+</ul>
+<p>We were pretty surprised by the results.</p>
+<p>True to its namesake,
+<img src="/static/images/insights/20251108_human_ai/gigachad.jpg" class="img-inline" style="height:1.2rem;margin-right:0em;" /> <strong>gigachad</strong>
+dominates Claude Sonnet 4.5, winning</p>
+<ul>
+<li>10/10 tournaments</li>
+<li>150/150 rounds</li>
+<li>37,500/37,500 simulations</li>
+</ul>
+<p><img src="/static/images/insights/20251108_human_ai/scoreboard.png" class="img-insight" style="width:100%" /></p>
+<p>We didn't necessarily expect Claude Sonnet 4.5 to write a better bot than <img src="/static/images/insights/20251108_human_ai/gigachad.jpg" class="img-inline" style="height:1.2rem;margin-right:0em;" />
+<strong>gigachad</strong>, but what surprised us was the <em>magnitude</em> of the difference.</p>
+<h2>What went wrong?</h2>
+<p>In our original paper, we discuss several weaknesses with regards to LMs as long-horizon, self-improving developers:</p>
+<ol>
+<li>Model codebases become messier over time without proper refactoring<ul>
+<li>Models don't really reuse or build on files</li>
+<li>Models generate a lot of redundant, single-use code</li>
+<li>Models dump all these files in the root directory, rather than organize them into folders</li>
+</ul>
+</li>
+<li>Models don't draw insights from prior runs effectively. Models <em>do</em> look at competition logs, but the analysis is often shallow, such as just reading the first couple lines or calculating win rate. But it won't...<ul>
+<li>Understand the format of logs deeply (e.g., by reading docs)</li>
+<li>Look at multiple logs together to identify patterns</li>
+</ul>
+</li>
+<li>Models draw questionable conclusions from their insights</li>
+</ol>
+<p>From these runs, we see these weaknesses clearly manifested.</p>
+<p><strong>1. Messy Codebases</strong>: Claude Sonnet 4.5 creates 33 files by the end of the tournament (<a href="https://github.com/CodeClash-ai/RobotRumble/compare/main...PvpTournament.RobotRumble.r15.s250.p2.claude-sonnet-4-5-20250929.human.251101155558.claude-sonnet-4-5-20250929">PR</a>).</p>
+<ul>
+<li><code>analyze_logs.py</code>, <code>analyze_round.py</code> are a bit redundant.</li>
+<li><code>check_spawn*.py</code> could be combined.</li>
+<li><code>combat_analysis.py</code>, <code>detailed_analysis.py</code> overlap in functionality.</li>
+</ul>
+<p><img src="/static/images/insights/20251108_human_ai/codebase.png" class="img-insight" /></p>
+<p><strong>2. Shallow Analysis</strong>: In this tournament, Claude Sonnet 4.5 does reuse the <code>analyze_logs.py</code> (yay!), but the analysis is somewhat shallow.</p>
+<ul>
+<li>It only looks at three simulations (first/middle/last) of each round.</li>
+<li>It just summarizes scores and winners, which is technically already in <code>results.json</code>.</li>
+<li>The analysis states facts (e.g., winner, initial/final units), but there's not much around <em>why</em> units were lost or <em>how</em> a competition actually unfolded.</li>
+</ul>
+<details>
+<summary>Show `analyze_logs.py` code</summary>
+<pre class="prettyprint lang-py">
+import json
+import os
+from collections import defaultdict
+
+def analyze_simulation(sim_file):
+    """Analyze a single simulation file"""
+    with open(sim_file, 'r') as f:
+        data = json.load(f)
+    winner = data.get('winner', 'Unknown')
+    turns = data.get('turns', [])
+    if not turns:
+        return None
+    # Get initial and final state
+    initial_state = turns[0]['state']
+    final_state = turns[-1]['state']
+    # Count units by team
+    def count_units(state):
+        red_units = 0
+        blue_units = 0
+        for obj in state['objs'].values():
+            if obj.get('obj_type') == 'Unit':
+                if obj.get('team') == 'Red':
+                    red_units += 1
+                elif obj.get('team') == 'Blue':
+                    blue_units += 1
+        return red_units, blue_units
+    initial_red, initial_blue = count_units(initial_state)
+    final_red, final_blue = count_units(final_state)
+    return {
+        'winner': winner,
+        'turns': len(turns),
+        'initial_red': initial_red,
+        'initial_blue': initial_blue,
+        'final_red': final_red,
+        'final_blue': final_blue
+    }
+
+def analyze_round(round_dir):
+    """Analyze all simulations in a round"""
+    results_file = os.path.join(round_dir, 'results.json')
+    if not os.path.exists(results_file):
+        print(f"No results.json found in {round_dir}")
+        return
+    with open(results_file, 'r') as f:
+        results = json.load(f)
+    print(f"\n=== Round {results['round_num']} Results ===")
+    print(f"Winner: {results['winner']}")
+    print(f"Scores: {results['scores']}")
+    # Analyze a few sample simulations
+    sim_files = [f for f in os.listdir(round_dir) if f.startswith('sim_') and f.endswith('.json')]
+    sim_files.sort(key=lambda x: int(x.split('_')[1].split('.')[0]))
+    print(f"\nTotal simulations: {len(sim_files)}")
+    # Sample first, middle, and last simulations
+    samples = []
+    if len(sim_files) > 0:
+        samples.append(sim_files[0])
+    if len(sim_files) > 1:
+        samples.append(sim_files[len(sim_files)//2])
+    if len(sim_files) > 2:
+        samples.append(sim_files[-1])
+    print("\nSample simulations:")
+    for sim_file in samples:
+        sim_path = os.path.join(round_dir, sim_file)
+        analysis = analyze_simulation(sim_path)
+        if analysis:
+            print(f"\n{sim_file}:")
+            print(f"  Winner: {analysis['winner']}")
+            print(f"  Turns: {analysis['turns']}")
+            print(f"  Initial units - Red: {analysis['initial_red']}, Blue: {analysis['initial_blue']}")
+            print(f"  Final units - Red: {analysis['final_red']}, Blue: {analysis['final_blue']}")
+
+if __name__ == '__main__':
+    logs_dir = '/logs/rounds'
+    # Find all round directories
+    round_dirs = []
+    for item in os.listdir(logs_dir):
+        item_path = os.path.join(logs_dir, item)
+        if os.path.isdir(item_path):
+            round_dirs.append(item_path)
+    round_dirs.sort()
+    for round_dir in round_dirs:
+        analyze_round(round_dir)
+</pre>
+</details>
+
+<p>One could imagine analyses that dig deeper, such as...</p>
+<ul>
+<li>Seeing how opponent units are behaving (are they clustering around weak units? How do opponents' healthy vs. damaged units behave differently?)</li>
+<li>Write analyses that digest simulations from multiple rounds.</li>
+</ul>
+<p><strong>3. Misinterpretations</strong>: Finally, a snippet of some fairly crucial mis-interpretations of prior results:</p>
+<p><img src="/static/images/insights/20251108_human_ai/missteps.png" class="img-insight" /></p>
+<blockquote>
+<p>THOUGHT (Step 4): Interesting! The pattern shows that we (Blue) won in rounds 1, 3, 4, and 7, but lost in rounds 0, 2, 5, and 6. It seems like we're alternating - when we're Blue we win (spawn avoidance works), but when we're Red we lose (opponent has spawn avoidance).</p>
+</blockquote>
+<p>This is incorrect.
+<img src="/static/images/insights/20251108_human_ai/gigachad.jpg" class="img-inline" style="height:1.2rem;margin-right:0em;" /> <strong>gigachad</strong> wins every single round.
+Colors are assigned randomly each round, so there's no correlation.
+In <code>results.json</code>, there's explicitly a line that clarifies this:</p>
+<p><code>In this round, claude-sonnet-4-5-20250929 was Blue and human was Red.</code></p>
+<blockquote>
+<p>ACTION (Step 4): <code>cd /workspace &amp;&amp; for i in 1 50 100 150 200; do echo "=== sim_$i.json ==="; python detailed_analysis.py /logs/rounds/7/sim_$i.json | head -20; done</code></p>
+</blockquote>
+<p>The analysis again just samples a handful of simulations.
+This is arguably okay, but...</p>
+<blockquote>
+<p>THOUGHT (Step 5): Perfect! All sampled games show Blue (us) winning consistently with 40 units vs Red's 3-4 units. The spawn avoidance is working well...</p>
+</blockquote>
+<p>This is unfortunately the wrong conclusion.
+Given this flawed insight, the rest of the changes this round are, as shown, not effective.</p>
+<h2>See for yourself</h2>
+<p>You can access all trajectories from our <a href="https://viewer.codeclash.ai">viewer</a>.
+Just enter <code>human</code> in the search field on top.</p>
+<h2>Concluding Thoughts</h2>
+<p>A surprising result indeed!</p>
+<ul>
+<li>As benchmark builders, it's great to identify room for growth.</li>
+<li>As model trainers, we think this is signal that CodeClash's goal-oriented rewards can be very useful for post-training.</li>
+</ul>
+<p>Next, we're interested in...</p>
+<ul>
+<li>Repeating this process for other arenas. Did we overlook a submission or leaderboard? Create an issue in our <a href="https://github.com/CodeClash-ai/CodeClash">GitHub repo</a> if you spot one!</li>
+<li>Studying human-AI collaboration/competition dynamics requires careful experimental design and recruitment. We're exploring ways to do this meaningfully at scale (<a href="/team/">email us</a> if you're interested!)</li>
+</ul>
+<p>For now, <img src="/static/images/insights/20251108_human_ai/gigachad.jpg" class="img-inline" style="height:1.2rem;margin-right:0em;" /> <strong>gigachad</strong> remains formidable.
+Until next time!</p>
+<p>P.S. here is the <code>robot.py</code> Claude Sonnet 4.5 wrote by the 15th round.
+It did come up with some clever strategies from the get-go, but it's the ability to build-over-time that leaves more to be desired.</p>
+<details>
+<summary>Show `robot.py` code</summary>
+<pre class="prettyprint lang-py">
+"""
+Round 15 - Improved spawn clearing and more aggressive combat
+- Start clearing at turn 3 (earlier than turn 5)
+- ALL units avoid spawn points during clearing window
+- More aggressive combat to maintain unit superiority
+"""
+
+def get_robots_for_team(state, team):
+    """Get all units for a team."""
+    return [obj for obj in state.objs_by_team(team)]
+
+def get_nearby_units(unit, units, radius=5):
+    """Get units within radius of given unit."""
+    return [u for u in units if unit.coords.distance_to(u.coords) <= radius]
+
+def find_weakest_adjacent_enemy(unit, enemies):
+    """Find the weakest adjacent enemy to attack."""
+    adjacent = [(e, unit.coords.direction_to(e.coords)) 
+                for e in enemies 
+                if unit.coords.distance_to(e.coords) == 1]
+
+    if not adjacent:
+        return None
+
+    adjacent.sort(key=lambda x: x[0].health)
+    return adjacent[0][1]
+
+def get_direction_counts(unit, units):
+    """Count how many units are in each direction."""
+    direction_counts = {}
+    for u in units:
+        if u.id == unit.id:
+            continue
+        direction = unit.coords.direction_to(u.coords)
+        direction_counts[direction] = direction_counts.get(direction, 0) + 1
+    return direction_counts
+
+def get_most_common_directions(unit, units):
+    """Get directions with most units."""
+    counts = get_direction_counts(unit, units)
+    if not counts:
+        return []
+
+    max_count = max(counts.values())
+    return [d for d, c in counts.items() if c == max_count]
+
+def is_move_valid(state, unit, direction):
+    """Check if we can move in a direction."""
+    try:
+        new_coords = unit.coords + direction
+        obj = state.obj_by_coords(new_coords)
+        return obj is None
+    except:
+        return False
+
+def get_move_toward_center(state, unit):
+    """Get a move that takes us toward the center of the map (away from spawn points)."""
+    # Map center is around (9, 9)
+    center_x, center_y = 9, 9
+
+    # Determine which direction moves us closer to center
+    dx = center_x - unit.coords.x
+    dy = center_y - unit.coords.y
+
+    # Prioritize the larger difference
+    directions = []
+    if abs(dx) >= abs(dy):
+        if dx > 0:
+            directions.append(Direction.East)
+        elif dx < 0:
+            directions.append(Direction.West)
+        if dy > 0:
+            directions.append(Direction.South)
+        elif dy < 0:
+            directions.append(Direction.North)
+    else:
+        if dy > 0:
+            directions.append(Direction.South)
+        elif dy < 0:
+            directions.append(Direction.North)
+        if dx > 0:
+            directions.append(Direction.East)
+        elif dx < 0:
+            directions.append(Direction.West)
+
+    # Try directions that move toward center and avoid spawn points
+    for direction in directions:
+        if is_move_valid(state, unit, direction):
+            new_coords = unit.coords + direction
+            if not new_coords.is_spawn():
+                return direction
+
+    # If can't move toward center without spawn, try any non-spawn move
+    all_directions = [Direction.North, Direction.South, Direction.East, Direction.West]
+    for direction in all_directions:
+        if is_move_valid(state, unit, direction):
+            new_coords = unit.coords + direction
+            if not new_coords.is_spawn():
+                return direction
+
+    # Last resort: move anywhere
+    for direction in all_directions:
+        if is_move_valid(state, unit, direction):
+            return direction
+
+    return None
+
+def robot(state, unit):
+    """Main robot logic."""
+    turn_in_cycle = state.turn % 10
+
+    # CRITICAL: Clear spawn points before spawn turns
+    # Spawns happen at turn 0, 10, 20, 30, etc.
+    # Start clearing at turn 3 to ensure spawn points are clear
+    is_near_spawn_time = (turn_in_cycle >= 3)
+
+    # If we're on a spawn point during clearing window, MUST move off
+    if is_near_spawn_time and unit.coords.is_spawn():
+        move_dir = get_move_toward_center(state, unit)
+        if move_dir:
+            return Action.move(move_dir)
+        # If completely blocked, do nothing
+        return None
+
+    # Get all units
+    our_robots = get_robots_for_team(state, state.our_team)
+    enemy_robots = get_robots_for_team(state, state.other_team)
+
+    if not enemy_robots:
+        return None
+
+    # Calculate aggressive multiplier - be more aggressive overall
+    # Increase aggression near spawn time to push enemies away
+    spawn_multiplier = 2.5 if turn_in_cycle >= 7 else 1.5
+    health_multiplier = 0.5 if unit.health <= 2 else 1.0
+    aggressive_multiplier = spawn_multiplier * health_multiplier
+
+    # Get nearby units
+    nearby_allies = get_nearby_units(unit, our_robots, radius=5)
+    nearby_enemies = get_nearby_units(unit, enemy_robots, radius=5)
+
+    # Calculate local strength
+    ally_strength = len(nearby_allies) + sum(a.health for a in nearby_allies) / 5.0
+    enemy_strength = len(nearby_enemies) + sum(e.health for e in nearby_enemies) / 5.0
+
+    # Find adjacent enemy
+    adjacent_enemy_dir = find_weakest_adjacent_enemy(unit, nearby_enemies)
+
+    # If outnumbered locally, try to flee
+    if ally_strength * aggressive_multiplier < enemy_strength:
+        enemy_directions = get_most_common_directions(unit, nearby_enemies)
+        flee_directions = [d.opposite for d in enemy_directions]
+
+        ally_directions = get_most_common_directions(unit, nearby_allies)
+
+        # Prefer directions away from enemies and toward allies
+        common_directions = [d for d in flee_directions if d in ally_directions]
+
+        # During clearing window, avoid spawn points
+        for direction in common_directions:
+            if is_move_valid(state, unit, direction):
+                new_coords = unit.coords + direction
+                if not is_near_spawn_time or not new_coords.is_spawn():
+                    return Action.move(direction)
+
+        # Just flee away from enemies
+        for direction in flee_directions:
+            if is_move_valid(state, unit, direction):
+                new_coords = unit.coords + direction
+                if not is_near_spawn_time or not new_coords.is_spawn():
+                    return Action.move(direction)
+
+        # Attack if adjacent
+        if adjacent_enemy_dir:
+            return Action.attack(adjacent_enemy_dir)
+
+        return None
+
+    # We have local advantage, be aggressive
+
+    # Attack if adjacent
+    if adjacent_enemy_dir:
+        return Action.attack(adjacent_enemy_dir)
+
+    # Move toward nearest enemy
+    if enemy_robots:
+        nearest_enemy = min(enemy_robots, key=lambda e: unit.coords.distance_to(e.coords))
+        move_direction = unit.coords.direction_to(nearest_enemy.coords)
+
+        # Try to move, rotating if blocked
+        for _ in range(4):
+            if is_move_valid(state, unit, direction):
+                new_coords = unit.coords + move_direction
+                # During clearing window, avoid spawn points
+                if not is_near_spawn_time or not new_coords.is_spawn():
+                    return Action.move(move_direction)
+            move_direction = move_direction.rotate_cw
+
+    return None
+</pre>
+</div>
+
+
+    <!-- Lightbox for images -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        // Theme toggle functionality
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
+            var media = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+            function readStored() {
+                try { return localStorage.getItem('theme'); } catch (e) { return null; }
+            }
+            function writeStored(theme) {
+                try { localStorage.setItem('theme', theme); } catch (e) {}
+            }
+            function effectiveTheme() {
+                var stored = readStored();
+                if (stored === 'dark' || stored === 'light') return stored;
+                return (media && media.matches) ? 'dark' : 'light';
+            }
+            function apply(theme) {
+                root.setAttribute('data-theme', theme);
+                updateLabel();
+            }
+            function updateLabel() {
+                var theme = effectiveTheme();
+                if (!btn) return;
+                // Don't set textContent - we're using SVG icons now
+                btn.title = 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode';
+                btn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+            }
+            function toggle() {
+                var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+                apply(next);
+                writeStored(next);
+            }
+            if (btn) btn.addEventListener('click', toggle);
+            if (media && media.addEventListener) media.addEventListener('change', function () {
+                if (readStored() == null) apply(effectiveTheme()); else updateLabel();
+            });
+            apply(effectiveTheme());
+        })();
+
+        // Image lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.lightbox-close');
+            
+            // Add click handler to all img-insight images
+            document.querySelectorAll('.img-insight').forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.classList.add('active');
+                    lightboxImg.src = this.src;
+                    lightboxImg.alt = this.alt;
+                });
+            });
+            
+            // Close lightbox when clicking close button
+            closeBtn.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+            });
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+            
+            // Close lightbox with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    
+    <!-- Custom JavaScript will go here -->
+    
+</body>
+</html>

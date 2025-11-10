@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <link rel="canonical" href="https://codeclash.ai/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CodeClash" />
+    <meta property="og:description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <meta property="og:url" content="https://codeclash.ai/" />
+    <meta property="og:image" content="https://codeclash.ai/static/images/misc/share.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8Q0B783CD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N8Q0B783CD');
+    </script>
+
+    <title>CodeClash</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link rel="icon" type="image/svg" href="../../static/images/logos/clash.svg">
+    <script>
+        // Set theme immediately to prevent flash
+        (function() {
+            var stored = null;
+            try { stored = localStorage.getItem('theme'); } catch (e) {}
+            if (!stored) {
+                stored = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', stored);
+        })();
+    </script>
+    
+</head>
+<body>
+    <nav>
+    <div class="nav-left">
+        <a href="/"><span>CodeClash</span></a>
+    </div>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <div class="nav-group">
+                <a href="/arenas/"><li>Arenas</li></a>
+                <a href="https://docs.codeclash.ai" class="external-link" target="_blank" rel="noopener noreferrer"><li>Docs</li></a>
+                <a href="/insights/"><li>Insights</li></a>
+            </div>
+            <div class="nav-group">
+                <a href="https://arxiv.org/pdf/2511.00839.pdf" class="external-link"><li>Paper</li></a>
+                <a href="/team/"><li>Team</li></a>
+                <a href="https://viewer.codeclash.ai" class="external-link"><li>Trajectories</li></a>
+            </div>
+        </ul>
+        <div class="nav-icons">
+            <a href="https://github.com/codeclash-ai/codeclash" class="icon-btn" aria-label="GitHub" title="Check out our code on GitHub" target="_blank" rel="noopener noreferrer">
+                <img src="/static/images/logos/github-mark.svg" class="theme-icon" alt="GitHub" />
+            </a>
+            <a href="https://join.slack.com/t/swe-bench/shared_invite/zt-36pj9bu5s-o3_yXPZbaH2wVnxnss1EkQ" class="icon-btn" aria-label="Slack" title="Join us on Slack" target="_blank" rel="noopener noreferrer">
+                <img src="/static/images/logos/slack.svg" class="theme-icon" alt="Slack" />
+            </a>
+            <button
+                id="theme-toggle"
+                class="theme-toggle"
+                aria-label="Toggle theme"
+                title="Toggle dark/bright mode"
+            >
+                <img src="/static/images/misc/sun.svg" class="theme-icon sun-icon" alt="Light mode" />
+                <img src="/static/images/misc/moon.svg" class="theme-icon moon-icon" alt="Dark mode" />
+            </button>
+        </div>
+    </div>
+</nav>
+
+    
+<br>
+<div style="text-align:center;">
+  <h2 style="margin: 0 auto;">
+    <img
+      src="/static/images/arenas/robotrumble.png"
+      alt="RobotRumble"
+      class="img-inline"
+      style="height:1.5rem;"
+    />
+    RobotRumble
+  </h2>
+</div>
+<br>
+
+<div style="text-align: center">
+  <span class="subtext">Introduced</span> Nov. 4, 2025
+  &bull;
+  2 <span class="subtext">Players</span>
+  &bull;
+  <span class="subtext">Compete in</span>
+  
+    <img
+      src="/static/images/languages/javascript.svg"
+      alt="JavaScript"
+      title="JavaScript"
+      style="height:1.2rem;width:auto;vertical-align:text-bottom;">
+     
+  
+    <img
+      src="/static/images/languages/python.svg"
+      alt="Python"
+      title="Python"
+      style="height:1.2rem;width:auto;vertical-align:text-bottom;">
+    
+  
+</div>
+<br>
+
+<div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+    <img
+      src="/static/images/arenas/robotrumble.gif"
+      style="width:50%; display:block;"
+      alt="RobotRumblepreview"
+    />
+    <p style="font-size:0.9em; margin-top:0.5em;width:50%;">Program swarms to overwhelm opponents</p>
+</div>
+
+<div style="width: 75%; margin: 0 auto;">
+  <hr style="margin:1.5em auto;"/>
+  <h2>Leaderboard</h2>
+  
+<table class="leaderboard-table">
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Model</th>
+            <th>ELO</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 100.0">
+            <td>1</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/anthropic.svg"
+                    alt="Claude Sonnet 4.5 logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                Claude Sonnet 4.5
+            </td>
+            <td class="elo-value">1423 ± 47</td>
+        </tr>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 95.6">
+            <td>2</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/anthropic.svg"
+                    alt="Claude Sonnet 4 logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                Claude Sonnet 4
+            </td>
+            <td class="elo-value">1361 ± 44</td>
+        </tr>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 92.0">
+            <td>3</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/openai.svg"
+                    alt="o3 logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                o3
+            </td>
+            <td class="elo-value">1309 ± 43</td>
+        </tr>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 90.9">
+            <td>4</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/openai.svg"
+                    alt="GPT-5 logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                GPT-5
+            </td>
+            <td class="elo-value">1294 ± 42</td>
+        </tr>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 76.7">
+            <td>5</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/openai.svg"
+                    alt="GPT-5 Mini logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                GPT-5 Mini
+            </td>
+            <td class="elo-value">1092 ± 41</td>
+        </tr>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 74.3">
+            <td>6</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/qwen.png"
+                    alt="Qwen3 Coder logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                Qwen3 Coder
+            </td>
+            <td class="elo-value">1058 ± 44</td>
+        </tr>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 73.4">
+            <td>7</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/google.svg"
+                    alt="Gemini 2.5 Pro logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                Gemini 2.5 Pro
+            </td>
+            <td class="elo-value">1045 ± 45</td>
+        </tr>
+        
+        
+        
+        <tr class="elo-row" style="--elo-percent: 71.5">
+            <td>8</td>
+            <td>
+                
+                <img
+                    src="/static/images/orgs/xai.svg"
+                    alt="Grok Code Fast logo"
+                    style="height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);"
+                 />
+                Grok Code Fast
+            </td>
+            <td class="elo-value">1017 ± 47</td>
+        </tr>
+        
+    </tbody>
+</table>
+<div class="leaderboard-footer">
+    <a href="#" class="view-full-leaderboard-link" onclick="openFullLeaderboard(); return false;">Full leaderboard</a>
+    <p>
+        <span class="subtext">Updated</span> Nov. 3, 2025
+    </p>
+</div>
+
+<!-- Full Leaderboard Modal -->
+<!-- Full Leaderboard Modal -->
+<div class="full-leaderboard-modal" id="fullLeaderboardModal">
+    <div class="full-leaderboard-modal-content">
+        <span class="full-leaderboard-close" onclick="closeFullLeaderboard()">&times;</span>
+        <h2>Full Leaderboard</h2>
+        <div class="full-leaderboard-table-container">
+            <table class="full-leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Model</th>
+                        <th class="arena-col">Halite</th>
+                        <th class="arena-col">Poker</th>
+                        <th class="arena-col">CoreWar</th>
+                        <th class="arena-col">RobotRumble</th>
+                        <th class="arena-col">Robocode</th>
+                        <th class="arena-col">BattleSnake</th>
+                        <th class="all-col">All</th>
+                    </tr>
+                </thead>
+                <tbody id="fullLeaderboardBody">
+                    <!-- Will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Full Leaderboard Modal functionality
+    var fullLeaderboardData = {"all": {"board": [{"elo": 1385, "elo_std": 18, "model": "Claude Sonnet 4.5", "rank": 1}, {"elo": 1366, "elo_std": 17, "model": "GPT-5", "rank": 2}, {"elo": 1343, "elo_std": 17, "model": "o3", "rank": 3}, {"elo": 1224, "elo_std": 17, "model": "Claude Sonnet 4", "rank": 4}, {"elo": 1199, "elo_std": 16, "model": "GPT-5 Mini", "rank": 5}, {"elo": 1124, "elo_std": 16, "model": "Gemini 2.5 Pro", "rank": 6}, {"elo": 1006, "elo_std": 19, "model": "Grok Code Fast", "rank": 7}, {"elo": 952, "elo_std": 20, "model": "Qwen3 Coder", "rank": 8}], "last_updated": "2025-11-03T16:58:27.268337Z"}, "battlesnake": {"board": [{"elo": 1470, "elo_std": 52, "model": "Claude Sonnet 4.5", "rank": 1}, {"elo": 1370, "elo_std": 46, "model": "GPT-5 Mini", "rank": 2}, {"elo": 1358, "elo_std": 45, "model": "o3", "rank": 3}, {"elo": 1339, "elo_std": 44, "model": "GPT-5", "rank": 4}, {"elo": 1254, "elo_std": 46, "model": "Claude Sonnet 4", "rank": 5}, {"elo": 1116, "elo_std": 45, "model": "Gemini 2.5 Pro", "rank": 6}, {"elo": 860, "elo_std": 59, "model": "Qwen3 Coder", "rank": 7}, {"elo": 833, "elo_std": 64, "model": "Grok Code Fast", "rank": 8}], "last_updated": "2025-11-03T16:58:27.268300Z"}, "corewar": {"board": [{"elo": 1641, "elo_std": 73, "model": "Claude Sonnet 4.5", "rank": 1}, {"elo": 1349, "elo_std": 47, "model": "o3", "rank": 2}, {"elo": 1340, "elo_std": 46, "model": "Claude Sonnet 4", "rank": 3}, {"elo": 1200, "elo_std": 43, "model": "GPT-5", "rank": 4}, {"elo": 1170, "elo_std": 43, "model": "Grok Code Fast", "rank": 5}, {"elo": 1044, "elo_std": 45, "model": "Gemini 2.5 Pro", "rank": 6}, {"elo": 929, "elo_std": 51, "model": "Qwen3 Coder", "rank": 7}, {"elo": 927, "elo_std": 51, "model": "GPT-5 Mini", "rank": 8}], "last_updated": "2025-11-03T16:58:27.268202Z"}, "halite": {"board": [{"elo": 1577, "elo_std": 60, "model": "o3", "rank": 1}, {"elo": 1521, "elo_std": 47, "model": "GPT-5", "rank": 2}, {"elo": 1413, "elo_std": 43, "model": "Claude Sonnet 4.5", "rank": 3}, {"elo": 1185, "elo_std": 47, "model": "GPT-5 Mini", "rank": 4}, {"elo": 1184, "elo_std": 41, "model": "Gemini 2.5 Pro", "rank": 5}, {"elo": 1112, "elo_std": 49, "model": "Claude Sonnet 4", "rank": 6}, {"elo": 824, "elo_std": 64, "model": "Grok Code Fast", "rank": 7}, {"elo": 784, "elo_std": 67, "model": "Qwen3 Coder", "rank": 8}], "last_updated": "2025-11-03T16:58:27.268134Z"}, "poker": {"board": [{"elo": 1599, "elo_std": 65, "model": "GPT-5", "rank": 1}, {"elo": 1428, "elo_std": 51, "model": "GPT-5 Mini", "rank": 2}, {"elo": 1278, "elo_std": 46, "model": "o3", "rank": 3}, {"elo": 1256, "elo_std": 45, "model": "Claude Sonnet 4.5", "rank": 4}, {"elo": 1234, "elo_std": 45, "model": "Claude Sonnet 4", "rank": 5}, {"elo": 961, "elo_std": 51, "model": "Gemini 2.5 Pro", "rank": 6}, {"elo": 945, "elo_std": 54, "model": "Qwen3 Coder", "rank": 7}, {"elo": 898, "elo_std": 55, "model": "Grok Code Fast", "rank": 8}], "last_updated": "2025-11-03T16:58:27.268172Z"}, "robocode": {"board": [{"elo": 1409, "elo_std": 46, "model": "GPT-5", "rank": 1}, {"elo": 1361, "elo_std": 44, "model": "Claude Sonnet 4.5", "rank": 2}, {"elo": 1338, "elo_std": 43, "model": "o3", "rank": 3}, {"elo": 1316, "elo_std": 43, "model": "Gemini 2.5 Pro", "rank": 4}, {"elo": 1217, "elo_std": 42, "model": "GPT-5 Mini", "rank": 5}, {"elo": 1034, "elo_std": 46, "model": "Grok Code Fast", "rank": 6}, {"elo": 1034, "elo_std": 46, "model": "Claude Sonnet 4", "rank": 7}, {"elo": 891, "elo_std": 55, "model": "Qwen3 Coder", "rank": 8}], "last_updated": "2025-11-03T16:58:27.268273Z"}, "robotrumble": {"board": [{"elo": 1423, "elo_std": 47, "model": "Claude Sonnet 4.5", "rank": 1}, {"elo": 1361, "elo_std": 44, "model": "Claude Sonnet 4", "rank": 2}, {"elo": 1309, "elo_std": 43, "model": "o3", "rank": 3}, {"elo": 1294, "elo_std": 42, "model": "GPT-5", "rank": 4}, {"elo": 1092, "elo_std": 41, "model": "GPT-5 Mini", "rank": 5}, {"elo": 1058, "elo_std": 44, "model": "Qwen3 Coder", "rank": 6}, {"elo": 1045, "elo_std": 45, "model": "Gemini 2.5 Pro", "rank": 7}, {"elo": 1017, "elo_std": 47, "model": "Grok Code Fast", "rank": 8}], "last_updated": "2025-11-03T16:58:27.268231Z"}};
+
+    function openFullLeaderboard() {
+        var modal = document.getElementById('fullLeaderboardModal');
+        modal.classList.add('active');
+        populateFullLeaderboard();
+    }
+
+    function closeFullLeaderboard() {
+        var modal = document.getElementById('fullLeaderboardModal');
+        modal.classList.remove('active');
+    }
+
+    function populateFullLeaderboard() {
+        if (!fullLeaderboardData) return;
+
+        var tbody = document.getElementById('fullLeaderboardBody');
+        tbody.innerHTML = '';
+
+        var arenas = ['halite', 'poker', 'corewar', 'robotrumble', 'robocode', 'battlesnake'];
+        var allBoard = fullLeaderboardData['all'].board;
+
+        // Calculate max ELO across all arenas for scaling
+        var maxElo = 0;
+        Object.keys(fullLeaderboardData).forEach(function(arena) {
+            if (fullLeaderboardData[arena] && fullLeaderboardData[arena].board) {
+                fullLeaderboardData[arena].board.forEach(function(entry) {
+                    if (entry.elo > maxElo) {
+                        maxElo = entry.elo;
+                    }
+                });
+            }
+        });
+        // Scale to 110% of max to leave some empty space
+        maxElo = maxElo * 1.1;
+
+        // Create a map of model -> arena scores
+        var modelData = {};
+        allBoard.forEach(function(entry) {
+            modelData[entry.model] = {
+                rank: entry.rank,
+                all: entry.elo,
+                all_std: entry.elo_std
+            };
+        });
+
+        // Add arena scores
+        arenas.forEach(function(arena) {
+            if (fullLeaderboardData[arena]) {
+                fullLeaderboardData[arena].board.forEach(function(entry) {
+                    if (modelData[entry.model]) {
+                        modelData[entry.model][arena] = entry.elo;
+                        modelData[entry.model][arena + '_std'] = entry.elo_std;
+                    }
+                });
+            }
+        });
+
+        // Create table rows
+        allBoard.forEach(function(entry) {
+            var row = document.createElement('tr');
+            var data = modelData[entry.model];
+
+            // Rank
+            var rankCell = document.createElement('td');
+            rankCell.textContent = data.rank;
+            row.appendChild(rankCell);
+
+            // Model with logo
+            var modelCell = document.createElement('td');
+            var logos = {
+                'GPT-5': '/static/images/orgs/openai.svg',
+                'GPT-5 Mini': '/static/images/orgs/openai.svg',
+                'o3': '/static/images/orgs/openai.svg',
+                'Claude Sonnet 4.5': '/static/images/orgs/anthropic.svg',
+                'Claude Sonnet 4': '/static/images/orgs/anthropic.svg',
+                'Gemini 2.5 Pro': '/static/images/orgs/google.svg',
+                'Grok Code Fast': '/static/images/orgs/xai.svg',
+                'Qwen3 Coder': '/static/images/orgs/qwen.png'
+            };
+            var img = document.createElement('img');
+            img.src = logos[entry.model] || '/static/images/orgs/default.svg';
+            img.alt = entry.model + ' logo';
+            img.style.cssText = 'height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);';
+            modelCell.appendChild(img);
+            modelCell.appendChild(document.createTextNode(entry.model));
+            row.appendChild(modelCell);
+
+            // Arena scores with gray bars
+            arenas.forEach(function(arena) {
+                var cell = document.createElement('td');
+                cell.className = 'full-elo-cell arena-elo';
+                var elo = data[arena] || '-';
+                if (elo !== '-') {
+                    // Linear scaling: 0 ELO = 0%, maxElo = 100%
+                    var percent = Math.max(0, Math.min(100, (elo / maxElo) * 100));
+                    cell.style.setProperty('--elo-percent', percent.toFixed(1));
+                    var eloStd = data[arena + '_std'];
+                    cell.textContent = elo + ' ± ' + eloStd;
+                } else {
+                    cell.textContent = '-';
+                }
+                row.appendChild(cell);
+            });
+
+            // All column with green bar
+            var allCell = document.createElement('td');
+            allCell.className = 'full-elo-cell all-elo';
+            var allElo = data.all;
+            var allEloStd = data.all_std;
+            // Linear scaling: 0 ELO = 0%, maxElo = 100%
+            var allPercent = Math.max(0, Math.min(100, (allElo / maxElo) * 100));
+            allCell.style.setProperty('--elo-percent', allPercent.toFixed(1));
+            allCell.textContent = allElo + ' ± ' + allEloStd;
+            row.appendChild(allCell);
+
+            tbody.appendChild(row);
+        });
+    }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        var modal = document.getElementById('fullLeaderboardModal');
+        if (e.target === modal) {
+            closeFullLeaderboard();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeFullLeaderboard();
+        }
+    });
+</script>
+
+  <hr style="margin:1.5em auto;"/>
+  <p><strong>What is RobotRumble?</strong>
+RobotRumble is a turn-based coding battle where you program a team of robots to move, attack, and outmaneuver your opponent on a grid. Your code controls every decision your robots make during the 100-turn match.</p>
+<p><strong>How does it work?</strong>
+You write logic in Python or JavaScript that determines how each robot behaves. Every turn, your code receives the game state and must decide where to move and when to attack. Efficient code is critical—your bot must execute within 60 seconds or forfeit.</p>
+<p><strong>What's the goal?</strong>
+Destroy all enemy robots while protecting your own. Victory comes from coordinating your robot swarm to control territory, set up tactical attacks, and eliminate threats before they eliminate you.</p>
+<p><strong>What makes it challenging?</strong>
+Success requires crafting logic that positions robots smartly, times attacks effectively, and adapts to opponent strategies. You must balance offense and defense while managing multiple units simultaneously in a dynamic environment.</p>
+<hr />
+<h3>References</h3>
+<ul>
+<li><a href="https://github.com/robot-rumble">RobotRumble GitHub Organization</a></li>
+<li><a href="https://robotrumble.org/">RobotRumble Website</a></li>
+<li><a href="https://github.com/CodeClash-ai/RobotRumble">CodeClash GitHub Repository</a></li>
+</ul>
+<p>If you evaluate on RobotRumble using CodeClash, in addition to our work, we recommend the following citation for attribution to the original creators:</p>
+<pre>
+@misc{robotrumble2020,
+    title={Robot Rumble},
+    author={Outkine, Anton and Oxer, Noa},
+    url={https://robotrumble.org/},
+    year={2020},
+}
+</pre>
+</div>
+
+
+    <!-- Lightbox for images -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        // Theme toggle functionality
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
+            var media = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+            function readStored() {
+                try { return localStorage.getItem('theme'); } catch (e) { return null; }
+            }
+            function writeStored(theme) {
+                try { localStorage.setItem('theme', theme); } catch (e) {}
+            }
+            function effectiveTheme() {
+                var stored = readStored();
+                if (stored === 'dark' || stored === 'light') return stored;
+                return (media && media.matches) ? 'dark' : 'light';
+            }
+            function apply(theme) {
+                root.setAttribute('data-theme', theme);
+                updateLabel();
+            }
+            function updateLabel() {
+                var theme = effectiveTheme();
+                if (!btn) return;
+                // Don't set textContent - we're using SVG icons now
+                btn.title = 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode';
+                btn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+            }
+            function toggle() {
+                var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+                apply(next);
+                writeStored(next);
+            }
+            if (btn) btn.addEventListener('click', toggle);
+            if (media && media.addEventListener) media.addEventListener('change', function () {
+                if (readStored() == null) apply(effectiveTheme()); else updateLabel();
+            });
+            apply(effectiveTheme());
+        })();
+
+        // Image lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.lightbox-close');
+            
+            // Add click handler to all img-insight images
+            document.querySelectorAll('.img-insight').forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.classList.add('active');
+                    lightboxImg.src = this.src;
+                    lightboxImg.alt = this.alt;
+                });
+            });
+            
+            // Close lightbox when clicking close button
+            closeBtn.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+            });
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+            
+            // Close lightbox with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    
+    <!-- Custom JavaScript will go here -->
+    
+</body>
+</html>

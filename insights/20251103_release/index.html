@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <link rel="canonical" href="https://codeclash.ai/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CodeClash" />
+    <meta property="og:description" content="CodeClash: Benchmarking Goal-Oriented Software Engineering" />
+    <meta property="og:url" content="https://codeclash.ai/" />
+    <meta property="og:image" content="https://codeclash.ai/static/images/misc/share.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N8Q0B783CD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N8Q0B783CD');
+    </script>
+
+    <title>CodeClash</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link rel="icon" type="image/svg" href="../../static/images/logos/clash.svg">
+    <script>
+        // Set theme immediately to prevent flash
+        (function() {
+            var stored = null;
+            try { stored = localStorage.getItem('theme'); } catch (e) {}
+            if (!stored) {
+                stored = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', stored);
+        })();
+    </script>
+    
+</head>
+<body>
+    <nav>
+    <div class="nav-left">
+        <a href="/"><span>CodeClash</span></a>
+    </div>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <div class="nav-group">
+                <a href="/arenas/"><li>Arenas</li></a>
+                <a href="https://docs.codeclash.ai" class="external-link" target="_blank" rel="noopener noreferrer"><li>Docs</li></a>
+                <a href="/insights/"><li>Insights</li></a>
+            </div>
+            <div class="nav-group">
+                <a href="https://arxiv.org/pdf/2511.00839.pdf" class="external-link"><li>Paper</li></a>
+                <a href="/team/"><li>Team</li></a>
+                <a href="https://viewer.codeclash.ai" class="external-link"><li>Trajectories</li></a>
+            </div>
+        </ul>
+        <div class="nav-icons">
+            <a href="https://github.com/codeclash-ai/codeclash" class="icon-btn" aria-label="GitHub" title="Check out our code on GitHub" target="_blank" rel="noopener noreferrer">
+                <img src="/static/images/logos/github-mark.svg" class="theme-icon" alt="GitHub" />
+            </a>
+            <a href="https://join.slack.com/t/swe-bench/shared_invite/zt-36pj9bu5s-o3_yXPZbaH2wVnxnss1EkQ" class="icon-btn" aria-label="Slack" title="Join us on Slack" target="_blank" rel="noopener noreferrer">
+                <img src="/static/images/logos/slack.svg" class="theme-icon" alt="Slack" />
+            </a>
+            <button
+                id="theme-toggle"
+                class="theme-toggle"
+                aria-label="Toggle theme"
+                title="Toggle dark/bright mode"
+            >
+                <img src="/static/images/misc/sun.svg" class="theme-icon sun-icon" alt="Light mode" />
+                <img src="/static/images/misc/moon.svg" class="theme-icon moon-icon" alt="Dark mode" />
+            </button>
+        </div>
+    </div>
+</nav>
+
+    
+<br>
+<div style="text-align:center;">
+  <h2>Introducing CodeClash</h2>
+  <p class="subtext">Benchmarking Goal Oriented Software Engineering</p>
+  <span>
+  Nov. 3, 2025 &bull;
+  
+    by 
+    
+    
+      <a href="../../team/index.html">John Yang</a>, 
+    
+      <a href="../../team/index.html">Kilian Lieret</a>
+    
+  
+  </span>
+</div>
+<br>
+<hr />
+
+<div class="insight-page">
+  <p>Existing coding benchmarks evaluate Language Models (LMs) on <em>tasks</em>.</p>
+<p>Implement a function, fix a bug, write a test.</p>
+<p>We tell models what to do, they give it a shot, and we evaluate correctness with unit tests.</p>
+<p>This approach has driven impressive progress in LMs' code generation capabilities over the past few years.</p>
+<p>However, as LM scores have skyrocketed on evaluations like <a href="https://github.com/openai/human-eval">HumanEval</a> and <a href="https://www.swebench.com/">SWE-bench</a>, such improvement also beckons the question: Is the future of code evals just making harder tasks?</p>
+<p>Our answer is founded in a simple question: Why do we write code?</p>
+<p>To achieve <em>goals</em>!</p>
+<p>Software developers aren't just incessantly solving tickets with no aim.
+We code to improve user retention, increase revenue, reduce costs, achieve higher customer satisfaction - the list is endless.</p>
+<p>Towards these goals, we decompose objectives into steps, prioritize them, and must strategically decide which solutions to pursue.</p>
+<p>And it's a continuous, often competitive loop. Propose changes, deploy them, analyze real-world feedback (e.g., metrics, user behavior, A/B test results), then do it all again.
+From this perspective, tasks are but small, isolated pieces tied together by an overarching goal.</p>
+<p>So we posit - perhaps the next frontier in code evaluation is not harder tasks, but <strong>goal-oriented software engineering</strong>.</p>
+<p>To formalize this, we're excited to share <strong>CodeClash</strong>!</p>
+<p>Multiple LM systems compete to build the best codebase for achieving a high-level objective over the course of a multi-round tournament.
+These codebases implement solutions that compete in a code arena.</p>
+<p><img src="/static/images/insights/20251104_release/banner.png" class="img-insight" /></p>
+<div style="text-align:center;">
+    <span class="subtext">Picture Credit to <a href="https://abehou.github.io/">Abe Hou</a></span>
+</div>
+
+<p>Crucially, LMs do not play directly.
+Instead, they iteratively refine code that competes as their proxy.</p>
+<p>CodeClash enables us to examine models as long-running, continually improving developers:</p>
+<ul>
+<li>Objectives are open-ended (win, survive, or maximize reward)</li>
+<li>Arenas are diverse so solutions and interfaces differ dramatically</li>
+<li>Competition rewards adaptive strategies rather than one-off correctness.</li>
+</ul>
+<p>If you're curious about models using code as the modality to learn, adapt, and improve over time, CodeClash is the playground for you.</p>
+<p>Thanks for reading! Check out our <a href="https://arxiv.org/abs/2511.00839">paper</a> for the full story. And if you're ready to dive in, here's a quick video to show you how to set up the repository and run your first CodeClash tournament!</p>
+<div style="position: relative; padding-bottom: 65.01809408926417%; height: 0;">
+<iframe src="https://www.loom.com/embed/a04ea3ecc8d64cfd918b12f6f1775017" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+</iframe>
+</div>
+</div>
+
+
+    <!-- Lightbox for images -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        // Theme toggle functionality
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
+            var media = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+            function readStored() {
+                try { return localStorage.getItem('theme'); } catch (e) { return null; }
+            }
+            function writeStored(theme) {
+                try { localStorage.setItem('theme', theme); } catch (e) {}
+            }
+            function effectiveTheme() {
+                var stored = readStored();
+                if (stored === 'dark' || stored === 'light') return stored;
+                return (media && media.matches) ? 'dark' : 'light';
+            }
+            function apply(theme) {
+                root.setAttribute('data-theme', theme);
+                updateLabel();
+            }
+            function updateLabel() {
+                var theme = effectiveTheme();
+                if (!btn) return;
+                // Don't set textContent - we're using SVG icons now
+                btn.title = 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode';
+                btn.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+            }
+            function toggle() {
+                var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+                apply(next);
+                writeStored(next);
+            }
+            if (btn) btn.addEventListener('click', toggle);
+            if (media && media.addEventListener) media.addEventListener('change', function () {
+                if (readStored() == null) apply(effectiveTheme()); else updateLabel();
+            });
+            apply(effectiveTheme());
+        })();
+
+        // Image lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.lightbox-close');
+            
+            // Add click handler to all img-insight images
+            document.querySelectorAll('.img-insight').forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.classList.add('active');
+                    lightboxImg.src = this.src;
+                    lightboxImg.alt = this.alt;
+                });
+            });
+            
+            // Close lightbox when clicking close button
+            closeBtn.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+            });
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+            
+            // Close lightbox with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    
+    <!-- Custom JavaScript will go here -->
+    
+</body>
+</html>

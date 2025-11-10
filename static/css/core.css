@@ -1,0 +1,114 @@
+/* Fonts */
+@import 'inter/inter.css';
+@import 'jersey/jersey.css';
+@import 'anta/anta.css';
+
+/**
+ * Design tokens and CSS variables
+ */
+:root {
+  --bg: #fdfdfd;
+  --fg: #0b0b0b;
+  --border: #e5e7eb;
+  --accent: #00cc66;
+  --gray: #6b7280;
+
+  /* Layout */
+  --container-width: 768px;
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-jersey: 'Jersey', serif;
+  --font-anta: 'Anta', sans-serif;
+
+  /* Font sizes */
+  --text-xs: 0.7rem;    /* 12px */
+  --text-sm: 0.8rem;   /* 14px */
+  --text-base: 0.9rem;     /* 16px */
+  --text-md: 1.125rem;   /* 18px */
+  --text-lg: 1.25rem;    /* 20px */
+  --text-xl: 1.5rem;     /* 24px */
+  --text-2xl: 1.875rem;  /* 30px */
+  --text-3xl: 2.25rem;   /* 36px */
+
+  /* Font weights */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Box shadows */
+  --box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #0b0c0c;
+        --fg: #e7e9ea;
+        --muted: #9aa2a9;
+        --border: #1f2328;
+        --accent: #00ff88;
+    }
+}
+
+:root[data-theme="light"] {
+    --bg: #fdfdfd;
+    --fg: #0b0b0b;
+    --muted: #5a5f66;
+    --border: #e5e7eb;
+    --accent: #00cc66;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+    --gray: #6b7280;
+}
+
+:root[data-theme="dark"] {
+    --bg: #0b0c0c;
+    --fg: #e7e9ea;
+    --muted: #9aa2a9;
+    --border: #1f2328;
+    --accent: #00ff88;
+    --box-shadow: rgba(255, 255, 255, 0.15);
+    --gray: #6b7280;
+}
+
+.jersey { font-family: var(--font-jersey); }
+
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-md { font-size: var(--text-md); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100px;
+  margin-bottom: 0.5em;
+  padding: 1em 0;
+  font-family: var(--font-anta);
+  font-size: var(--text-2xl);
+}
+
+.hero img {
+  height: 3.5rem;
+}
+
+/* Logo styling for dark mode */
+img[src*="anthropic.svg"],
+img[src*="xai.svg"],
+img[src*="openai.svg"] {
+  /* No filter in light mode - keeps original colors */
+  filter: none;
+}
+
+:root[data-theme="dark"] img[src*="anthropic.svg"],
+:root[data-theme="dark"] img[src*="xai.svg"],
+:root[data-theme="dark"] img[src*="openai.svg"] {
+  /* White filter for dark mode */
+  filter: brightness(0) invert(1);
+}
