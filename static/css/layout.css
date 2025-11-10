@@ -243,6 +243,181 @@ nav {
     z-index: 1;
 }
 
+/* Leaderboard footer with button */
+.leaderboard-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.leaderboard-footer p {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.view-full-leaderboard-link {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    font-size: var(--text-sm);
+    padding: 0.25rem 0;
+    display: inline-block;
+}
+
+.view-full-leaderboard-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* Full Leaderboard Modal */
+.full-leaderboard-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+.full-leaderboard-modal.active {
+    display: block;
+}
+
+.full-leaderboard-modal-content {
+    background-color: var(--bg);
+    margin: 2% auto;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    width: 90%;
+    max-width: 1400px;
+    position: relative;
+}
+
+.full-leaderboard-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: var(--fg);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    line-height: 1;
+}
+
+.full-leaderboard-close:hover {
+    opacity: 0.7;
+}
+
+.full-leaderboard-modal h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: var(--font-anta);
+}
+
+.full-leaderboard-table-container {
+    overflow-x: auto;
+}
+
+.full-leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+}
+
+.full-leaderboard-table th,
+.full-leaderboard-table td {
+    padding: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.full-leaderboard-table th {
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+}
+
+.full-leaderboard-table td:first-child,
+.full-leaderboard-table th:first-child {
+    text-align: left;
+    width: 3rem;
+}
+
+.full-leaderboard-table td:nth-child(2),
+.full-leaderboard-table th:nth-child(2) {
+    text-align: left;
+    width: 10rem;
+    min-width: 10rem;
+}
+
+/* Equal width for all arena columns */
+.full-leaderboard-table th.arena-col,
+.full-leaderboard-table td.arena-elo {
+    width: 8rem;
+    min-width: 8rem;
+}
+
+.full-leaderboard-table th.all-col,
+.full-leaderboard-table td.all-elo {
+    width: 8rem;
+    min-width: 8rem;
+}
+
+.full-elo-cell {
+    position: relative;
+    font-weight: 500;
+}
+
+/* Gray bars for individual arenas */
+.full-elo-cell.arena-elo {
+    background: linear-gradient(
+        to right,
+        rgba(128, 128, 128, 0.25) calc(var(--elo-percent) * 1%),
+        transparent calc(var(--elo-percent) * 1%)
+    );
+}
+
+/* Green bar for the "All" column */
+.full-elo-cell.all-elo {
+    background: linear-gradient(
+        to right,
+        rgba(34, 197, 94, 0.25) calc(var(--elo-percent) * 1%),
+        transparent calc(var(--elo-percent) * 1%)
+    );
+    font-weight: 600;
+}
+
+/* Mobile responsive for modal */
+@media (max-width: 768px) {
+    .full-leaderboard-modal-content {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 5% auto;
+    }
+
+    .full-leaderboard-table {
+        font-size: 0.75rem;
+    }
+
+    .full-leaderboard-table th,
+    .full-leaderboard-table td {
+        padding: 0.35rem 0.25rem;
+    }
+
+    .leaderboard-footer {
+        flex-wrap: wrap;
+    }
+}
+
 /* Insights */
 .insights-container {
     width: 75%;

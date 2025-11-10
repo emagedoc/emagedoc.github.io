@@ -1,0 +1,166 @@
+<!-- Full Leaderboard Modal -->
+<div class="full-leaderboard-modal" id="fullLeaderboardModal">
+    <div class="full-leaderboard-modal-content">
+        <span class="full-leaderboard-close" onclick="closeFullLeaderboard()">&times;</span>
+        <h2>Full Leaderboard</h2>
+        <div class="full-leaderboard-table-container">
+            <table class="full-leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Model</th>
+                        <th class="arena-col">Halite</th>
+                        <th class="arena-col">Poker</th>
+                        <th class="arena-col">CoreWar</th>
+                        <th class="arena-col">RobotRumble</th>
+                        <th class="arena-col">Robocode</th>
+                        <th class="arena-col">BattleSnake</th>
+                        <th class="all-col">All</th>
+                    </tr>
+                </thead>
+                <tbody id="fullLeaderboardBody">
+                    <!-- Will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Full Leaderboard Modal functionality
+    var fullLeaderboardData = {{ all_leaderboards | tojson | safe }};
+
+    function openFullLeaderboard() {
+        var modal = document.getElementById('fullLeaderboardModal');
+        modal.classList.add('active');
+        populateFullLeaderboard();
+    }
+
+    function closeFullLeaderboard() {
+        var modal = document.getElementById('fullLeaderboardModal');
+        modal.classList.remove('active');
+    }
+
+    function populateFullLeaderboard() {
+        if (!fullLeaderboardData) return;
+
+        var tbody = document.getElementById('fullLeaderboardBody');
+        tbody.innerHTML = '';
+
+        var arenas = ['halite', 'poker', 'corewar', 'robotrumble', 'robocode', 'battlesnake'];
+        var allBoard = fullLeaderboardData['all'].board;
+
+        // Calculate max ELO across all arenas for scaling
+        var maxElo = 0;
+        Object.keys(fullLeaderboardData).forEach(function(arena) {
+            if (fullLeaderboardData[arena] && fullLeaderboardData[arena].board) {
+                fullLeaderboardData[arena].board.forEach(function(entry) {
+                    if (entry.elo > maxElo) {
+                        maxElo = entry.elo;
+                    }
+                });
+            }
+        });
+        // Scale to 110% of max to leave some empty space
+        maxElo = maxElo * 1.1;
+
+        // Create a map of model -> arena scores
+        var modelData = {};
+        allBoard.forEach(function(entry) {
+            modelData[entry.model] = {
+                rank: entry.rank,
+                all: entry.elo,
+                all_std: entry.elo_std
+            };
+        });
+
+        // Add arena scores
+        arenas.forEach(function(arena) {
+            if (fullLeaderboardData[arena]) {
+                fullLeaderboardData[arena].board.forEach(function(entry) {
+                    if (modelData[entry.model]) {
+                        modelData[entry.model][arena] = entry.elo;
+                        modelData[entry.model][arena + '_std'] = entry.elo_std;
+                    }
+                });
+            }
+        });
+
+        // Create table rows
+        allBoard.forEach(function(entry) {
+            var row = document.createElement('tr');
+            var data = modelData[entry.model];
+
+            // Rank
+            var rankCell = document.createElement('td');
+            rankCell.textContent = data.rank;
+            row.appendChild(rankCell);
+
+            // Model with logo
+            var modelCell = document.createElement('td');
+            var logos = {
+                'GPT-5': '/static/images/orgs/openai.svg',
+                'GPT-5 Mini': '/static/images/orgs/openai.svg',
+                'o3': '/static/images/orgs/openai.svg',
+                'Claude Sonnet 4.5': '/static/images/orgs/anthropic.svg',
+                'Claude Sonnet 4': '/static/images/orgs/anthropic.svg',
+                'Gemini 2.5 Pro': '/static/images/orgs/google.svg',
+                'Grok Code Fast': '/static/images/orgs/xai.svg',
+                'Qwen3 Coder': '/static/images/orgs/qwen.png'
+            };
+            var img = document.createElement('img');
+            img.src = logos[entry.model] || '/static/images/orgs/default.svg';
+            img.alt = entry.model + ' logo';
+            img.style.cssText = 'height:1em; vertical-align:middle; margin-right:0.4em; display:inline-block; transform:translateY(-0.12em);';
+            modelCell.appendChild(img);
+            modelCell.appendChild(document.createTextNode(entry.model));
+            row.appendChild(modelCell);
+
+            // Arena scores with gray bars
+            arenas.forEach(function(arena) {
+                var cell = document.createElement('td');
+                cell.className = 'full-elo-cell arena-elo';
+                var elo = data[arena] || '-';
+                if (elo !== '-') {
+                    // Linear scaling: 0 ELO = 0%, maxElo = 100%
+                    var percent = Math.max(0, Math.min(100, (elo / maxElo) * 100));
+                    cell.style.setProperty('--elo-percent', percent.toFixed(1));
+                    var eloStd = data[arena + '_std'];
+                    cell.textContent = elo + ' ± ' + eloStd;
+                } else {
+                    cell.textContent = '-';
+                }
+                row.appendChild(cell);
+            });
+
+            // All column with green bar
+            var allCell = document.createElement('td');
+            allCell.className = 'full-elo-cell all-elo';
+            var allElo = data.all;
+            var allEloStd = data.all_std;
+            // Linear scaling: 0 ELO = 0%, maxElo = 100%
+            var allPercent = Math.max(0, Math.min(100, (allElo / maxElo) * 100));
+            allCell.style.setProperty('--elo-percent', allPercent.toFixed(1));
+            allCell.textContent = allElo + ' ± ' + allEloStd;
+            row.appendChild(allCell);
+
+            tbody.appendChild(row);
+        });
+    }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        var modal = document.getElementById('fullLeaderboardModal');
+        if (e.target === modal) {
+            closeFullLeaderboard();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeFullLeaderboard();
+        }
+    });
+</script>
+
