@@ -582,7 +582,7 @@ pre.prettyprint {
 
 :root[data-theme="dark"] pre,
 :root[data-theme="dark"] pre.prettyprint {
-    background-color: var(--fg) !important;
+    background-color: var(--bg) !important;
 }
 
 pre p {
