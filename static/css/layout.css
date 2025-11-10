@@ -219,13 +219,28 @@ nav {
 .leaderboard-table td:first-child,
 .leaderboard-table th:first-child {
     text-align: left;
-    width: 3rem;
+    width: 1rem;
 }
 
 .leaderboard-table td:last-child,
 .leaderboard-table th:last-child {
     text-align: right;
     width: 8rem;
+}
+
+/* ELO row with background bar visualization spanning entire row */
+.elo-row {
+    position: relative;
+    background: linear-gradient(
+        to right,
+        rgba(34, 197, 94, 0.25) calc(var(--elo-percent) * 1%),
+        transparent calc(var(--elo-percent) * 1%)
+    );
+}
+
+.elo-row td {
+    position: relative;
+    z-index: 1;
 }
 
 /* Insights */

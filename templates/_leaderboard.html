@@ -1,3 +1,6 @@
+{% set elo_min_scale = 700 %}
+{% set elo_max_scale = leaderboard.board | map(attribute='elo') | max %}
+{% set elo_scale_range = elo_max_scale - elo_min_scale %}
 <table class="leaderboard-table">
     <thead>
         <tr>
@@ -8,7 +11,9 @@
     </thead>
     <tbody>
         {% for entry in leaderboard.board %}
-        <tr>
+        {% set elo_percent_raw = (entry.elo - elo_min_scale) / elo_scale_range * 100 %}
+        {% set elo_percent = [0, [elo_percent_raw, 100] | min] | max %}
+        <tr class="elo-row" style="--elo-percent: {{ '%.1f' | format(elo_percent) }}">
             <td>{{ entry.rank }}</td>
             <td>
                 {% set logos = {
@@ -28,7 +33,7 @@
                  />
                 {{ entry.model }}
             </td>
-            <td>{{ entry.elo }} ± {{ entry.elo_std }}</td>
+            <td class="elo-value">{{ entry.elo }} ± {{ entry.elo_std }}</td>
         </tr>
         {% endfor %}
     </tbody>
