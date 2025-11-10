@@ -96,14 +96,14 @@
 }
 
 .preview-image {
-    width: 150%;
-    max-width: 150%;
     display: block;
-    content: url('/static/images/misc/preview.png');
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    height: auto;
+    width: 140%;
+    max-width: 95vw;
+    margin: 1rem 0 0 0;
+    margin-left: calc((100% - 140%) / 2);
 }
+
 
 :root[data-theme="dark"] .preview-image {
     content: url('/static/images/misc/preview_light.png');
@@ -243,6 +243,7 @@
     .preview-image {
         width: 100%;
         max-width: 100%;
+        margin-left: 0;
     }
 
     .h2columns > div {
