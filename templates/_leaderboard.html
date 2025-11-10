@@ -1,6 +1,4 @@
-{% set elo_min_scale = 700 %}
 {% set elo_max_scale = leaderboard.board | map(attribute='elo') | max %}
-{% set elo_scale_range = elo_max_scale - elo_min_scale %}
 <table class="leaderboard-table">
     <thead>
         <tr>
@@ -11,7 +9,7 @@
     </thead>
     <tbody>
         {% for entry in leaderboard.board %}
-        {% set elo_percent_raw = (entry.elo - elo_min_scale) / elo_scale_range * 100 %}
+        {% set elo_percent_raw = (entry.elo / elo_max_scale) * 100 %}
         {% set elo_percent = [0, [elo_percent_raw, 100] | min] | max %}
         <tr class="elo-row" style="--elo-percent: {{ '%.1f' | format(elo_percent) }}">
             <td>{{ entry.rank }}</td>
@@ -38,6 +36,12 @@
         {% endfor %}
     </tbody>
 </table>
-<p>
-    <span class="subtext">Last updated</span> {{ leaderboard.last_updated | format_timestamp }}
-</p>
+<div class="leaderboard-footer">
+    <a href="#" class="view-full-leaderboard-link" onclick="openFullLeaderboard(); return false;">Full leaderboard</a>
+    <p>
+        <span class="subtext">Updated</span> {{ leaderboard.last_updated | format_timestamp }}
+    </p>
+</div>
+
+<!-- Full Leaderboard Modal -->
+{% include "_full_leaderboard_modal.html" %}

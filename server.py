@@ -49,29 +49,29 @@ def format_timestamp(timestamp_str):
 # Routes
 @app.route('/')
 def index():
-   return render_template('index.html', leaderboard=leaderboards["all"])
+   return render_template('index.html', leaderboard=leaderboards["all"], all_leaderboards=leaderboards)
 
 @app.route('/<path:path>/')
 def page(path):
-    return render_template('page.html', page=pages.get_or_404(path))
+    return render_template('page.html', page=pages.get_or_404(path), all_leaderboards=leaderboards)
 
 @app.route('/team/')
 def team():
     with open("data/team.json") as f:
         team_data = json.load(f)
-    return render_template('team.html', data=team_data)
+    return render_template('team.html', data=team_data, all_leaderboards=leaderboards)
 
 @app.route('/insights/')
 def insights():
-    return render_template('insights.html', pages=pages_insights)
+    return render_template('insights.html', pages=pages_insights, all_leaderboards=leaderboards)
 
 @app.route('/insights/<path:path>/')
 def insight(path):
-    return render_template('page.html', page=pages.get_or_404('insights/' + path))
+    return render_template('page.html', page=pages.get_or_404('insights/' + path), all_leaderboards=leaderboards)
 
 @app.route('/arenas/')
 def arenas():
-    return render_template('arenas.html', pages=pages_arenas)
+    return render_template('arenas.html', pages=pages_arenas, all_leaderboards=leaderboards)
 
 @app.route('/arenas/<path:path>/')
 def arena(path):
@@ -79,11 +79,12 @@ def arena(path):
         'arena.html',
         page=pages.get_or_404('arenas/' + path),
         leaderboard=leaderboards.get(path, []),
+        all_leaderboards=leaderboards,
     )
 
 @app.errorhandler(404)
 def page_not_found(path):
-    return render_template('404.html'), 404
+    return render_template('404.html', all_leaderboards=leaderboards), 404
 
 # Freezer generators
 @freezer.register_generator
